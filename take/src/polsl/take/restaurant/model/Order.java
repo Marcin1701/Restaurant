@@ -33,12 +33,12 @@ public class Order implements Serializable {
 	private Timestamp orderDate;
 	
 	@Column(name = "card_payment")
-	private Character cardPayment;
+	private Boolean cardPayment;
 	
 	private Integer table;
 	
 	@Column(name = "take_away")
-	private Character takeAway;
+	private Boolean takeAway;
 	
 	@OneToMany(mappedBy = "orderId")
 	private List<Drink> drinkList;
@@ -70,11 +70,11 @@ public class Order implements Serializable {
 		this.orderDate = orderDate;
 	}
 
-	public Character getCardPayment() {
+	public Boolean getCardPayment() {
 		return cardPayment;
 	}
 
-	public void setCardPayment(Character cardPayment) {
+	public void setCardPayment(Boolean cardPayment) {
 		this.cardPayment = cardPayment;
 	}
 
@@ -86,11 +86,11 @@ public class Order implements Serializable {
 		this.table = table;
 	}
 
-	public Character getTakeAway() {
+	public Boolean getTakeAway() {
 		return takeAway;
 	}
 
-	public void setTakeAway(Character takeAway) {
+	public void setTakeAway(Boolean takeAway) {
 		this.takeAway = takeAway;
 	}
 

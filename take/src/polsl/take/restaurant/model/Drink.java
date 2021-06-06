@@ -21,7 +21,7 @@ public class Drink implements Serializable{
 
 	private String name;
 	
-	private Character alcohol;
+	private Boolean alcohol;
 	
 	@ManyToOne
 	@JoinColumn(name = "order_id")
@@ -35,11 +35,11 @@ public class Drink implements Serializable{
 		this.name = name;
 	}
 
-	public Character getAlcohol() {
+	public Boolean getAlcohol() {
 		return alcohol;
 	}
 
-	public void setAlcohol(Character alcohol) {
+	public void setAlcohol(Boolean alcohol) {
 		this.alcohol = alcohol;
 	}
 

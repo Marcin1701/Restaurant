@@ -30,9 +30,9 @@ public class Meal implements Serializable{
 	@JoinColumn(name = "order_id")
 	private Order orderId;
 	
-	private Character vegan;
+	private Boolean vegan;
 	
-	private Character vegetarian;
+	private Boolean vegetarian;
 
 	@ManyToMany
 	@JoinTable(name = "Relation_3",
@@ -68,19 +68,19 @@ public class Meal implements Serializable{
 		this.price = price;
 	}
 
-	public Character getVegan() {
+	public Boolean getVegan() {
 		return vegan;
 	}
 
-	public void setVegan(Character vegan) {
+	public void setVegan(Boolean vegan) {
 		this.vegan = vegan;
 	}
 
-	public Character getVegetarian() {
+	public Boolean getVegetarian() {
 		return vegetarian;
 	}
 
-	public void setVegetarian(Character vegetarian) {
+	public void setVegetarian(Boolean vegetarian) {
 		this.vegetarian = vegetarian;
 	}
 
