@@ -22,26 +22,9 @@ public class Ingredient implements Serializable {
 	private Integer id;
 	
 	private String name;
-	
-	private Integer quantity;
 
 	@ManyToMany(mappedBy = "ingredientList")
 	private List<Meal> mealList;
-	
-	@ManyToMany
-	@JoinTable(name = "Relation_5",
-				joinColumns = @JoinColumn(name = "ingredients_id"),
-				inverseJoinColumns = @JoinColumn(name = "allergens_id"))
-	private List<Allergen> allergenList;
-
-	
-	public List<Allergen> getAllergenList() {
-		return allergenList;
-	}
-
-	public void setAllergenList(List<Allergen> allergenList) {
-		this.allergenList = allergenList;
-	}
 
 	public List<Meal> getMealList() {
 		return mealList;
@@ -61,14 +44,6 @@ public class Ingredient implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
 	}
 	
 	

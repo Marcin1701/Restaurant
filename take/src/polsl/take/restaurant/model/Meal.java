@@ -36,8 +36,12 @@ public class Meal implements Serializable{
 
 	@ManyToMany
 	@JoinTable(name = "Relation_3",
-				joinColumns = @JoinColumn(name = "meal_id"),
-				inverseJoinColumns = @JoinColumn(name = "ingredients_id"))
+				joinColumns = @JoinColumns({
+        				@JoinColumn(name = "meal_id"),
+        				@JoinColumn(name="quantities_id")
+    				}),
+				inverseJoinColumns = @JoinColumn(name = "ingredients_id")
+				)
 	private List<Ingredient> ingredientList;
 	
 	public List<Ingredient> getIngredientList() {

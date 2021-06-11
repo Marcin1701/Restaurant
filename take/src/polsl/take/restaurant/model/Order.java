@@ -41,9 +41,6 @@ public class Order implements Serializable {
 	private Boolean takeAway;
 	
 	@OneToMany(mappedBy = "orderId")
-	private List<Drink> drinkList;
-	
-	@OneToMany(mappedBy = "orderId")
 	private List<Meal> mealList;
 
 	public Float getPrice() {
@@ -92,14 +89,6 @@ public class Order implements Serializable {
 
 	public void setTakeAway(Boolean takeAway) {
 		this.takeAway = takeAway;
-	}
-
-	public List<Drink> getDrinkList() {
-		return drinkList;
-	}
-
-	public void setDrinkList(List<Drink> drinkList) {
-		this.drinkList = drinkList;
 	}
 
 	public List<Meal> getMealList() {
