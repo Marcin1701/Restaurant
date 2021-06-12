@@ -33,15 +33,14 @@ public class Meal implements Serializable{
 	private Boolean vegan;
 	
 	private Boolean vegetarian;
-
+	
 	@ManyToMany
 	@JoinTable(name = "Relation_3",
-				joinColumns = @JoinColumns({
-        				@JoinColumn(name = "meal_id"),
-        				@JoinColumn(name="quantities_id")
-    				}),
-				inverseJoinColumns = @JoinColumn(name = "ingredients_id")
-				)
+				joinColumns = { 
+						@JoinColumn(name = "meal_id"),
+						@JoinColumn(name = "quantities_id") },
+				inverseJoinColumns = { @JoinColumn(name = "ingredients_id") }
+	)
 	private List<Ingredient> ingredientList;
 	
 	public List<Ingredient> getIngredientList() {
