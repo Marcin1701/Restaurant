@@ -22,6 +22,7 @@ CREATE TABLE Meals
     name    VARCHAR (255) NOT NULL ,
     price FLOAT NOT NULL ,
     vegeterian      BOOLEAN NOT NULL ,
+    vegan	    BOOLEAN NOT NULL ,
     Orders_order_id INTEGER NOT NULL
   ) ;
 ALTER TABLE Meals ADD CONSTRAINT Meals_PK PRIMARY KEY ( meal_id ) ;
@@ -34,6 +35,7 @@ CREATE TABLE Orders
     card_payment          BOOLEAN NOT NULL ,
     order_table           INTEGER ,
     take_away             BOOLEAN NOT NULL ,
+    order_date		  TIMESTAMP NOT NULL ,
     Customers_customer_id INTEGER NOT NULL
   ) ;
 ALTER TABLE Orders ADD CONSTRAINT Orders_PK PRIMARY KEY ( order_id ) ;
