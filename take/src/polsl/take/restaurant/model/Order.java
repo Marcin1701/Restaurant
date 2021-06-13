@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,10 +21,11 @@ public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_id")
 	private Integer orderId;
 
+	@Column(name = "prices")
 	private Float price;
 	
 	@ManyToOne
@@ -36,6 +38,7 @@ public class Order implements Serializable {
 	@Column(name = "card_payment")
 	private Boolean cardPayment;
 	
+	@Column(name = "order_table")
 	private Integer table;
 	
 	@Column(name = "take_away")
