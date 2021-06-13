@@ -1,69 +1,93 @@
-use restauracja;
-
-CREATE TABLE Relation_3
+CREATE
+  TABLE Customers
   (
-    meal_id        INTEGER NOT NULL,
-    ingredients_id INTEGER NOT NULL,
-    quantities_id  INTEGER NOT NULL
+    customer_id  INTEGER NOT NULL ,
+    first_name   VARCHAR (255) NOT NULL ,
+    last_name    VARCHAR (255) NOT NULL ,
+    phone_number VARCHAR (20) NOT NULL
   ) ;
-ALTER TABLE Relation_3 ADD CONSTRAINT Relation_3_PK PRIMARY KEY ( meal_id, ingredients_id, quantities_id ) ;
+ALTER TABLE Customers ADD CONSTRAINT Customers_PK PRIMARY KEY ( customer_id ) ;
 
 
-CREATE TABLE customers
+CREATE
+  TABLE Ingredients
   (
-    id         INTEGER NOT NULL,
-    first_name VARCHAR(255) NOT NULL,
-    last_name  VARCHAR(255) NOT NULL,
-    phone      VARCHAR(255) NOT NULL
+    ingredient_id INTEGER NOT NULL ,
+    name          VARCHAR (255) NOT NULL
   ) ;
-ALTER TABLE customers ADD CONSTRAINT customer_PK PRIMARY KEY ( id ) ;
+ALTER TABLE Ingredients ADD CONSTRAINT Ingredients_PK PRIMARY KEY (
+ingredient_id ) ;
 
 
-CREATE TABLE ingredients
+CREATE
+  TABLE Meals
   (
-    id   INTEGER NOT NULL ,
-    name VARCHAR(255) NOT NULL
+    meal_id INTEGER NOT NULL ,
+    name    VARCHAR (255) NOT NULL ,
+    price FLOAT NOT NULL ,
+    vegeterian      BOOLEAN NOT NULL ,
+    Orders_order_id INTEGER NOT NULL
   ) ;
-ALTER TABLE ingredients ADD CONSTRAINT Ingredients_PK PRIMARY KEY ( id ) ;
+ALTER TABLE Meals ADD CONSTRAINT Meals_PK PRIMARY KEY ( meal_id ) ;
 
 
-CREATE TABLE meals
+CREATE
+  TABLE Orders
   (
-    id   INTEGER NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    price FLOAT NOT NULL,
-    order_id   INTEGER NOT NULL,
-    vegan      BOOLEAN NOT NULL,
-    vegetarian BOOLEAN NOT NULL
+    order_id INTEGER NOT NULL ,
+    price FLOAT NOT NULL ,
+    card_payment          BOOLEAN NOT NULL ,
+    order_table           INTEGER ,
+    take_away             BOOLEAN NOT NULL ,
+    Customers_customer_id INTEGER NOT NULL
   ) ;
-ALTER TABLE meals ADD CONSTRAINT meal_PK PRIMARY KEY ( id ) ;
+ALTER TABLE Orders ADD CONSTRAINT Orders_PK PRIMARY KEY ( order_id ) ;
 
 
-CREATE TABLE orders
+CREATE
+  TABLE Quantities
   (
-    id INTEGER NOT NULL,
-    price FLOAT NOT NULL,
-    customer_id  INTEGER NOT NULL,
-    order_date   TIMESTAMP NOT NULL,
-    card_payment BOOLEAN NOT NULL,
-    "table"      INTEGER NOT NULL,
-    take_away    BOOLEAN NOT NULL
+    quantities_id INTEGER NOT NULL ,
+    quantity      INTEGER NOT NULL
   ) ;
-ALTER TABLE orders ADD CONSTRAINT order_PK PRIMARY KEY ( id ) ;
+ALTER TABLE Quantities ADD CONSTRAINT Quantities_PK PRIMARY KEY ( quantities_id
+) ;
 
 
-CREATE TABLE quantities
-  ( id INTEGER NOT NULL, quantity INTEGER NOT NULL
+CREATE
+  TABLE meals_ingredients
+  (
+    Ingredients_ingredient_id INTEGER NOT NULL ,
+    Meals_meal_id             INTEGER NOT NULL
   ) ;
-ALTER TABLE quantities ADD CONSTRAINT quantities_PK PRIMARY KEY ( id ) ;
+ALTER TABLE meals_ingredients ADD CONSTRAINT meals_ingredients_PK PRIMARY KEY (
+Ingredients_ingredient_id, Meals_meal_id ) ;
 
 
-ALTER TABLE Relation_3 ADD CONSTRAINT FK_ASS_3 FOREIGN KEY ( meal_id ) REFERENCES meals ( id ) ;
+CREATE
+  TABLE quantities_ingredients
+  (
+    Quantities_quantities_id  INTEGER NOT NULL ,
+    Ingredients_ingredient_id INTEGER NOT NULL
+  ) ;
+ALTER TABLE quantities_ingredients ADD CONSTRAINT quantities_ingredients_PK
+PRIMARY KEY ( Quantities_quantities_id, Ingredients_ingredient_id ) ;
 
-ALTER TABLE Relation_3 ADD CONSTRAINT FK_ASS_4 FOREIGN KEY ( ingredients_id ) REFERENCES ingredients ( id ) ;
 
-ALTER TABLE Relation_3 ADD CONSTRAINT FK_ASS_5 FOREIGN KEY ( quantities_id ) REFERENCES quantities ( id ) ;
+ALTER TABLE meals_ingredients ADD CONSTRAINT FK_ASS_2 FOREIGN KEY (
+Ingredients_ingredient_id ) REFERENCES Ingredients ( ingredient_id ) ;
 
-ALTER TABLE meals ADD CONSTRAINT meal_order_FK FOREIGN KEY ( order_id ) REFERENCES orders ( id ) ;
+ALTER TABLE meals_ingredients ADD CONSTRAINT FK_ASS_3 FOREIGN KEY (
+Meals_meal_id ) REFERENCES Meals ( meal_id ) ;
 
-ALTER TABLE orders ADD CONSTRAINT order_customer_FK FOREIGN KEY ( customer_id ) REFERENCES customers ( id ) ;
+ALTER TABLE quantities_ingredients ADD CONSTRAINT FK_ASS_5 FOREIGN KEY (
+Quantities_quantities_id ) REFERENCES Quantities ( quantities_id ) ;
+
+ALTER TABLE quantities_ingredients ADD CONSTRAINT FK_ASS_6 FOREIGN KEY (
+Ingredients_ingredient_id ) REFERENCES Ingredients ( ingredient_id ) ;
+
+ALTER TABLE Meals ADD CONSTRAINT Meals_Orders_FK FOREIGN KEY ( Orders_order_id
+) REFERENCES Orders ( order_id ) ;
+
+ALTER TABLE Orders ADD CONSTRAINT Orders_Customers_FK FOREIGN KEY (
+Customers_customer_id ) REFERENCES Customers ( customer_id ) ;
