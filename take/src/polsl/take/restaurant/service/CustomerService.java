@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import polsl.take.restaurant.model.Customer;
+import polsl.take.restaurant.model.Order;
 
 @Stateless
 public class CustomerService {
@@ -26,7 +27,6 @@ public class CustomerService {
 		@SuppressWarnings("unchecked")
 		List<Customer> list = query.getResultList();
 		return list;
-		
 	}
 	
 	// Read
@@ -45,5 +45,11 @@ public class CustomerService {
 		if (!customer.equals(null)) {
 			manager.remove(customer);
 		}
+	}
+	
+	public List<Order> findCustomerOrders(int id_customer) {
+		Customer customer = manager.find(Customer.class, id_customer);
+		List<Order> list = customer.getOrderList();
+		return list;
 	}
 }

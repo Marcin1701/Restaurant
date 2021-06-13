@@ -13,6 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import polsl.take.restaurant.model.Customer;
+import polsl.take.restaurant.model.Order;
 import polsl.take.restaurant.service.CustomerService;
 
 // url: localhost:8080/take/customer
@@ -51,5 +52,11 @@ public class CustomerREST {
 	@Path("/{id}")
 	public void deleteCustomer(@PathParam("id") int id) {
 		customerService.delete(id);
+	}
+	
+	@GET
+	@Path("/{customer_id}/orders")
+	public List<Order> getCustomerOrders(@PathParam("customer_id") int customer_id){
+		return customerService.findCustomerOrders(customer_id);
 	}
 }
