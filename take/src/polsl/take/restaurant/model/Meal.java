@@ -3,8 +3,10 @@ package polsl.take.restaurant.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -19,11 +21,14 @@ public class Meal implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "meal_id")
+	private Integer mealId;
 
+	@Column(name = "name")
 	private String name;
 	
+	@Column(name = "price")
 	private Float price;
 	
 	@ManyToOne
@@ -35,24 +40,14 @@ public class Meal implements Serializable{
 	private Boolean vegetarian;
 	
 	@ManyToMany
-	@JoinTable(name = "Relation_3",
-				joinColumns = { 
-						@JoinColumn(name = "meal_id"),
-						@JoinColumn(name = "quantities_id") },
-				inverseJoinColumns = { @JoinColumn(name = "ingredients_id") }
-	)
-	private List<Ingredient> ingredientList;
-	
-	public List<Ingredient> getIngredientList() {
-		return ingredientList;
-	}
-
-	public void setIngredientList(List<Ingredient> ingredientList) {
-		this.ingredientList = ingredientList;
-	}
+	@JoinTable(
+			name = "meals_ingredients",
+			joinColumns = @JoinColumn(name = "meal_id"),
+			inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
+	private List<Ingredient> ingredients;
 
 	public Integer getId() {
-		return id;
+		return mealId;
 	}
 
 	public String getName() {
@@ -94,5 +89,12 @@ public class Meal implements Serializable{
 	public void setOrderId(Order orderId) {
 		this.orderId = orderId;
 	}
-	
+
+	public List<Ingredient> getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(List<Ingredient> ingredients) {
+		this.ingredients = ingredients;
+	}
 }

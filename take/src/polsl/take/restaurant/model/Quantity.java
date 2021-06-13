@@ -1,31 +1,38 @@
 package polsl.take.restaurant.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "quantities")
-public class Quantities implements Serializable {
+public class Quantity implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "quantity_id")
+	private Integer quantityId;
 
+	@Column(name = "quantity")
 	private Integer quantity;
 	
-	public Integer getPrice() {
+	@ManyToMany(mappedBy = "quantities")
+	private List<Ingredient> ingredients;
+	
+	public Integer getQuantityId() {
+		return quantityId;
+	}
+	
+	public Integer getQuantity() {
 		return quantity;
 	}
 
@@ -33,13 +40,11 @@ public class Quantities implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public Customer getQuantityId() {
-		return customerId;
+	public List<Ingredient> getIngredients() {
+		return ingredients;
 	}
 
-	public void setQuantityId(Customer quantityId) {
-		this.customerId = customerId;
+	public void setIngredients(List<Ingredient> ingredients) {
+		this.ingredients = ingredients;
 	}
-	
-	
 }

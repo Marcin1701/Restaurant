@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,9 +21,11 @@ public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "order_id")
+	private Integer orderId;
 
+	@Column(name = "prices")
 	private Float price;
 	
 	@ManyToOne
@@ -35,6 +38,7 @@ public class Order implements Serializable {
 	@Column(name = "card_payment")
 	private Boolean cardPayment;
 	
+	@Column(name = "order_table")
 	private Integer table;
 	
 	@Column(name = "take_away")
@@ -42,6 +46,14 @@ public class Order implements Serializable {
 	
 	@OneToMany(mappedBy = "orderId")
 	private List<Meal> mealList;
+	
+	public Integer getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
+	}
 
 	public Float getPrice() {
 		return price;
@@ -98,10 +110,4 @@ public class Order implements Serializable {
 	public void setMealList(List<Meal> mealList) {
 		this.mealList = mealList;
 	}
-
-	public Integer getId() {
-		return id;
-	}
-	
-	
 }

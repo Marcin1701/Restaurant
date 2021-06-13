@@ -5,11 +5,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -20,9 +21,9 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue
-	@XmlAttribute
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "customer_id")
+	private Integer customerId;
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -33,7 +34,7 @@ public class Customer implements Serializable {
 	@Column(name = "phone_number")
 	private String phoneNumber;
 		
-	@OneToMany(mappedBy = "customerId")
+	@OneToMany(mappedBy = "customerId", fetch = FetchType.EAGER)
 	private List<Order> orderList;
 	
 	public List<Order> getOrderList() {
@@ -43,11 +44,11 @@ public class Customer implements Serializable {
 	public void setOrderList(List<Order> orderList) {
 		this.orderList = orderList;
 	}
-
-	public Integer getId() {
-		return this.id;
-	}
 	
+	public Integer getCustomerId() {
+		return customerId;
+	}
+
 	public String getFirstName() {
 		return this.firstName;
 	}
