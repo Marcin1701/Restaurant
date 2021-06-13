@@ -9,9 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -39,12 +38,8 @@ public class Meal implements Serializable{
 	
 	private Boolean vegetarian;
 	
-	@ManyToMany
-	@JoinTable(
-			name = "meals_ingredients",
-			joinColumns = @JoinColumn(name = "meal_id"),
-			inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
-	private List<Ingredient> ingredients;
+	@OneToMany(mappedBy = "meal")
+	private List<Quantity> quantities;
 
 	public Integer getId() {
 		return mealId;
@@ -90,11 +85,11 @@ public class Meal implements Serializable{
 		this.orderId = orderId;
 	}
 
-	public List<Ingredient> getIngredients() {
-		return ingredients;
+	public List<Quantity> getQuantities() {
+		return quantities;
 	}
 
-	public void setIngredients(List<Ingredient> ingredients) {
-		this.ingredients = ingredients;
+	public void setQuantities(List<Quantity> quantities) {
+		this.quantities = quantities;
 	}
 }

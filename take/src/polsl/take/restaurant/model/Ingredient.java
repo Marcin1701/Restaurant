@@ -8,9 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,15 +24,8 @@ public class Ingredient implements Serializable {
 	
 	@Column(name = "name")
 	private String name;
-
-	@ManyToMany(mappedBy = "ingredients")
-	private List<Meal> meals;
 	
-	@ManyToMany
-	@JoinTable(
-			name = "quantities_ingredients",
-			joinColumns = @JoinColumn(name = "ingredient_id"),
-			inverseJoinColumns = @JoinColumn(name = "quantity_id"))
+	@OneToMany(mappedBy = "ingredient")
 	private List<Quantity> quantities;
 	
 	public Integer getIngredientId() {
@@ -47,14 +38,6 @@ public class Ingredient implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<Meal> getMeals() {
-		return meals;
-	}
-
-	public void setMeals(List<Meal> meals) {
-		this.meals = meals;
 	}
 
 	public List<Quantity> getQuantities() {
