@@ -21,7 +21,8 @@ public class Order implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	private Integer id;
+	@Column(name = "order_id")
+	private Integer orderId;
 
 	private Float price;
 	
@@ -42,6 +43,14 @@ public class Order implements Serializable {
 	
 	@OneToMany(mappedBy = "orderId")
 	private List<Meal> mealList;
+	
+	public Integer getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
+	}
 
 	public Float getPrice() {
 		return price;
@@ -98,10 +107,4 @@ public class Order implements Serializable {
 	public void setMealList(List<Meal> mealList) {
 		this.mealList = mealList;
 	}
-
-	public Integer getId() {
-		return id;
-	}
-	
-	
 }

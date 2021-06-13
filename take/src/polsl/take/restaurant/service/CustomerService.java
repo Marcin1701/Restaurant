@@ -46,6 +46,4 @@ public class CustomerService {
 			manager.remove(customer);
 		}
 	}
-	
-	
 }
