@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GlobalConstants } from '../GlobalConstants'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'restaurant-frontend';
+  title: string = 'restaurant-frontend';
+
+  getBackgroundUrl() {
+    return "url(" + GlobalConstants.imageUrl + ")";
+  }
 }
