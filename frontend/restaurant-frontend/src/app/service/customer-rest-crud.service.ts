@@ -35,7 +35,7 @@ export class CustomerRestCrudService {
     return this.http.put<void>(`${this.apiUrl}/take/customer`, customer);
   }
 
-  public deleteCustomer(id: number) {
+  public deleteCustomer(id: number) {ng s
     return this.http.delete<void>(`${this.apiUrl}/take/customer/${id}`);
   }
 
