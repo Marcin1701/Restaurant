@@ -1,0 +1,15 @@
+<div class="container">
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="First Name" formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Last Name" formControlName="lastName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+    </mat-form-field>
+    <button mat-raised-button color="primary">Add</button>
+    <button mat-raised-button color="primary">Add customer and orders</button>
+  </form>
+</div>

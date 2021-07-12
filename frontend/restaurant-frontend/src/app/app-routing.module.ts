@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {CustomerComponent} from "./pages/customer/customer.component";
-import {HomeComponent} from "./pages/home/home.component";
-import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.component";
+import {CustomersComponent} from "./pages/customers/customers.component";
+import {OrdersComponent} from "./pages/orders/orders.component";
+import {AllCustomersComponent} from "./pages/customers/all-customers/all-customers.component";
+import {AddCustomerComponent} from "./pages/customers/add-customer/add-customer.component";
 
 const routes: Routes = [
-  { path: 'klienci', component: CustomerComponent },
-  { path: '', component: HomeComponent },
-  { path: '**', component: PageNotFoundComponent },
+  {
+    path: 'customers', component: CustomersComponent,
+    children: [
+      { path: 'all', component: AllCustomersComponent },
+      { path: 'add', component: AddCustomerComponent } ]
+  },
+  { path: 'orders', component: OrdersComponent}
 ];
 
 @NgModule({
