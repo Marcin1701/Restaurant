@@ -1,6 +1,4 @@
-<nav mat-tab-nav-bar>
-  <a mat-tab-link *ngFor="let link of links"
-     (click)="redirect(link)"
-     [active]="activeLink == link"> {{link}} </a>
-</nav>
-<router-outlet></router-outlet>
+<div class="container">
+  <button class="button" mat-raised-button color="primary" (click)="openDialog()">Add customer</button>
+</div>
+<app-all-customers></app-all-customers>

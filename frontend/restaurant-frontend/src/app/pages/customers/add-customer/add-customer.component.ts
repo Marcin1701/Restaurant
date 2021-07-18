@@ -1,36 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import {Component, Inject} from '@angular/core';
 import { Customer } from "../../../model/RestaurantModel"
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-add-customer',
   templateUrl: './add-customer.component.html',
   styleUrls: ['./add-customer.component.less']
 })
-export class AddCustomerComponent implements OnInit {
+export class AddCustomerComponent {
 
-  customerForm!: FormGroup;
+  constructor(
+    public dialogRef: MatDialogRef<AddCustomerComponent>,
+    @Inject(MAT_DIALOG_DATA) public customer: Customer,
+  ) {}
 
-  customer: Customer | undefined;
-
-  constructor(private formBuilder: FormBuilder) {}
-
-  ngOnInit(): void {
-    this.initializeForm();
-  }
-
-  private initializeForm(): void {
-    this.customerForm = this.formBuilder.group({
-      firstName: '',
-      lastName: '',
-      phoneNumber: ''
-    })
-  }
-
-  onSubmit(): void {
-    if (this.customerForm.valid) {
-      this.customer = this.customerForm.value;
-    }
-    console.log(this.customer);
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

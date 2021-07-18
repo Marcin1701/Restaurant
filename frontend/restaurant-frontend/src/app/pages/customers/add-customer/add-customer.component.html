@@ -1,15 +1,19 @@
-<div class="container">
-  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
-    <mat-form-field>
-      <input matInput placeholder="First Name" formControlName="firstName">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Last Name" formControlName="lastName">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Phone Number" formControlName="phoneNumber">
-    </mat-form-field>
-    <button mat-raised-button color="primary">Add</button>
-    <button mat-raised-button color="primary">Add customer and orders</button>
-  </form>
+<h1 mat-dialog-title>Add customer</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>First name</mat-label>
+    <input matInput [(ngModel)]="customer.firstName">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Last name</mat-label>
+    <input matInput [(ngModel)]="customer.lastName">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Phone</mat-label>
+    <input matInput [(ngModel)]="customer.phoneNumber">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Close</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="customer" cdkFocusInitial>Add</button>
 </div>
