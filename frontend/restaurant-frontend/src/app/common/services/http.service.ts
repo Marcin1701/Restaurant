@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Customer} from "../../model/RestaurantModel";
+import {Customer, MealResponse, OrderRequest, OrderResponse} from "../../model/RestaurantModel";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment"
@@ -9,21 +9,33 @@ import {environment} from "../../../environments/environment"
 })
 export class HttpService {
 
-  mockApiUrl: string;
+  apiUrl: string;
 
   constructor(private http: HttpClient) {
     if (environment.mockApiUrl) {
-      this.mockApiUrl = environment.jsonServerApiUrl;
+      this.apiUrl = environment.jsonServerApiUrl;
     } else {
-      this.mockApiUrl = environment.backendApiUrl;
+      this.apiUrl = environment.backendApiUrl;
     }
   }
 
   getCustomers(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.mockApiUrl + '/customers')
+    return this.http.get<Customer[]>(this.apiUrl + '/customers');
+  }
+
+  getOrders(): Observable<OrderResponse[]> {
+    return this.http.get<OrderResponse[]>(this.apiUrl + '/orders');
+  }
+
+  getMeals(): Observable<MealResponse[]> {
+    return this.http.get<MealResponse[]>(this.apiUrl + '/meals');
   }
 
   addCustomer(customer: Customer): Observable<Customer> {
-    return this.http.post<Customer>(this.mockApiUrl + '/customers', customer);
+    return this.http.post<Customer>(this.apiUrl + '/customers', customer);
+  }
+
+  addOrder(order: OrderRequest): Observable<OrderResponse> {
+    return this.http.post<OrderResponse>(this.apiUrl + '/orders', order);
   }
 }

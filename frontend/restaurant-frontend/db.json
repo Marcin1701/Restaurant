@@ -45,5 +45,56 @@
     {
       "id": 18
     }
+  ],
+  "orders": [
+    {
+      "orderId": 1,
+      "price": 123.21,
+      "customerId": [],
+      "orderDate": "2012-01-30",
+      "cardPayment": true,
+      "table": 2,
+      "takeAway": false,
+      "mealList": [
+        {
+          "mealId": 2,
+          "name": "schabowy",
+          "price": 32.21,
+          "vegan": false,
+          "vegetarian": false,
+          "quantities": [
+            {
+              "quantityId": 1,
+              "quantity": 300,
+              "unit": "g",
+              "ingredient": [
+                {
+                  "ingredientId": 2,
+                  "name": "schab"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "meals": [
+    {
+      "mealId": 3,
+      "name": "schabowy",
+      "price": 30.29,
+      "vegan": false,
+      "vegetarian": false,
+      "quantities": []
+    },
+    {
+      "mealId": 4,
+      "name": "sałatka",
+      "price": 30.29,
+      "vegan": true,
+      "vegetarian": true,
+      "quantities": []
+    }
   ]
 }

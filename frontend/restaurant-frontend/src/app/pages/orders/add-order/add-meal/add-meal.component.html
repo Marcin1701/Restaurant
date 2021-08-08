@@ -1,0 +1,12 @@
+<div class="meal-choice">
+  <mat-form-field appearance="fill">
+    <mat-label>Potrawa</mat-label>
+    <mat-select [formControl]="mealFormControl" multiple>
+      <mat-option *ngFor="let mealName of meal" [value]="mealName">{{mealName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Anuluj</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="selectedMeal" cdkFocusInitial>Dodaj</button>
+</div>
