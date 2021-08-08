@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Dodaj zamówienie</h1>
+<div mat-dialog-content>
+  <span class="card-payment">
+    <mat-checkbox [(ngModel)]="order.cardPayment">
+      Płatność kartą
+    </mat-checkbox>
+  </span>
+  <span class="take-away">
+    <mat-checkbox [(ngModel)]="order.takeAway">
+      Na wynos
+    </mat-checkbox>
+  </span>
+  <div class="table-choice">
+    <mat-form-field appearance="fill">
+      <mat-label>Numer stolika</mat-label>
+      <input matInput [(ngModel)]="order.table">
+    </mat-form-field>
+  </div>
+</div>
+<div class="container">
+  <button class="button" mat-raised-button color="primary" (click)="openDialog()">Dodaj potrawę</button>
+</div>
+<mat-list *ngIf="selectedMeals.length > 0">
+  <ng-container *ngFor="let meal of selectedMeals">
+    <mat-list-item>
+      {{meal}}
+    </mat-list-item>
+  </ng-container>
+</mat-list>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Anuluj</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="order" (click)="setNewOrder()" cdkFocusInitial>Dodaj</button>
+</div>

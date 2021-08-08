@@ -23,6 +23,11 @@ import {MatTableModule} from "@angular/material/table";
 import {HttpClientModule} from "@angular/common/http";
 import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { AddOrderComponent } from './pages/orders/add-order/add-order.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatSelectModule} from "@angular/material/select";
+import { AddMealComponent } from './pages/orders/add-order/add-meal/add-meal.component';
+import { AllOrdersComponent } from './pages/orders/all-orders/all-orders.component';
 
 @NgModule({
   declarations: [
@@ -32,27 +37,32 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     CustomersComponent,
     OrdersComponent,
     AllCustomersComponent,
-    AddCustomerComponent
+    AddCustomerComponent,
+    AddOrderComponent,
+    AddMealComponent,
+    AllOrdersComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatTabsModule,
-    MatSidenavModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    FormsModule,
-    MatListModule,
-    MatTableModule,
-    HttpClientModule,
-    MatSortModule,
-    MatPaginatorModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatTabsModule,
+        MatSidenavModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        FormsModule,
+        MatListModule,
+        MatTableModule,
+        HttpClientModule,
+        MatSortModule,
+        MatPaginatorModule,
+        MatCheckboxModule,
+        MatSelectModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

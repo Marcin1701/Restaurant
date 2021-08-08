@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {Customer} from "../../model/RestaurantModel";
 import {AddCustomerComponent} from "./add-customer/add-customer.component";
