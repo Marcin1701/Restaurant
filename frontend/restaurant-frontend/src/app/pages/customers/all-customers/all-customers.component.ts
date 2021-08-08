@@ -1,15 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input, OnChanges, SimpleChanges,
+  ViewChild
+} from '@angular/core';
+import {Customer} from "../../../model/RestaurantModel";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-all-customers',
   templateUrl: './all-customers.component.html',
   styleUrls: ['./all-customers.component.less']
 })
-export class AllCustomersComponent implements OnInit {
+export class AllCustomersComponent implements AfterViewInit, OnChanges {
 
-  constructor() { }
+  @Input()
+  customers!: Customer[];
 
-  ngOnInit(): void {
+  @ViewChild(MatSort)
+  sort: MatSort = new MatSort();
+
+  columnNames: string[] = ['firstName', 'lastName', 'phoneNumber'];
+
+  tableDataSource = new MatTableDataSource(this.customers);
+
+  ngAfterViewInit(): void {
+    this.tableDataSource.sort = this.sort;
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
 }

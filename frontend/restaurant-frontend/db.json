@@ -1,0 +1,49 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "firstName": "Jan",
+      "lastName": "Kowalski",
+      "phoneNumber": "544123112"
+    },
+    {
+      "firstName": "data2",
+      "lastName": "data2",
+      "phoneNumber": "data2",
+      "id": 12
+    },
+    {
+      "firstName": "nowy",
+      "lastName": "nowy",
+      "phoneNumber": "nowy",
+      "id": 13
+    },
+    {
+      "firstName": "sss",
+      "lastName": "sss",
+      "phoneNumber": "sss",
+      "id": 14
+    },
+    {
+      "firstName": "ppp",
+      "lastName": "ppp",
+      "phoneNumber": "ppp",
+      "id": 15
+    },
+    {
+      "firstName": "111",
+      "lastName": "111",
+      "phoneNumber": "111",
+      "id": 16
+    },
+    {
+      "firstName": "adsa",
+      "lastName": "dsad",
+      "phoneNumber": "dsad",
+      "id": 17
+    },
+    {
+      "id": 18
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "cardPayment": false,
+  "table": 3,
+  "takeAway": false,
+  "mealNames": [
+    "schabowy",
+    "żeberka"
+  ]
+}

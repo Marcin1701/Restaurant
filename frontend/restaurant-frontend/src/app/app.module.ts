@@ -18,6 +18,11 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatListModule} from "@angular/material/list";
+import {MatTableModule} from "@angular/material/table";
+import {HttpClientModule} from "@angular/common/http";
+import {MatSortModule} from "@angular/material/sort";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -41,7 +46,12 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     MatButtonModule,
     MatDialogModule,
     MatSnackBarModule,
-    FormsModule
+    FormsModule,
+    MatListModule,
+    MatTableModule,
+    HttpClientModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

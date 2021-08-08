@@ -1,26 +1,34 @@
-import {Component} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {Customer} from "../../model/RestaurantModel";
 import {AddCustomerComponent} from "./add-customer/add-customer.component";
 import {CustomerAction} from "../../actions/customer.action";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {HttpService} from "../../common/services/http.service";
 
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.less']
 })
-export class CustomersComponent {
+export class CustomersComponent implements OnInit {
   addCustomerPopupWidth: string = '300px';
 
-  newCustomer: Customer = {firstName: "", lastName: "", phoneNumber: ""};
+  newCustomer!: Customer;
+
+  allCustomers: Customer[] = [];
 
   constructor(public dialog: MatDialog,
               private customerAction: CustomerAction,
-              private _snackBar: MatSnackBar) { }
+              private _snackBar: MatSnackBar,
+              private httpService: HttpService) {
+  }
+
+  ngOnInit(): void {
+    this.httpService.getCustomers().subscribe(customers => this.allCustomers = customers);
+  }
 
   openDialog() {
-    this.newCustomer = CustomersComponent.resetCustomer();
     const dialogRef = this.dialog.open(AddCustomerComponent, {
       width: this.addCustomerPopupWidth,
       data: { customer: this.newCustomer }
@@ -41,11 +49,8 @@ export class CustomersComponent {
     })
   }
 
-  private static resetCustomer(): Customer {
-    return {firstName: "", lastName: "", phoneNumber: ""};
-  }
-
   private addCustomer(customer: Customer) {
-     this.customerAction.addCustomer(customer);
+     this.httpService.addCustomer(customer).subscribe(customerAdded => this.allCustomers.push(customerAdded));
+     console.log("All customers", this.allCustomers);
   }
 }

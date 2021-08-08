@@ -1,0 +1,83 @@
+{
+  "orderId": 3,
+  "price": 123.32,
+  "customerId": [],
+  "orderDate": "2021-12-01T13:30",
+  "cardPayment": false,
+  "table": 3,
+  "takeAway": false,
+  "mealList": [
+    {
+      "mealId": 1,
+      "name": "schabowy",
+      "price": 32.29,
+      "vegan": false,
+      "vegetarian": false,
+      "quantities": [
+        {
+          "quantityId": 3,
+          "quantity": 200,
+          "unit": "g",
+          "ingredient":   {
+            "ingredientId": 3,
+            "name": "schab"
+          }
+        },
+        {
+          "quantityId": 3,
+          "quantity": 400,
+          "unit": "g",
+          "ingredient": {
+            "ingredientId": 3,
+            "name": "ziemniaki"
+          }
+        },
+        {
+          "quantityId": 3,
+          "quantity": 200,
+          "unit": "g",
+          "ingredient": {
+            "ingredientId": 3,
+            "name": "surówka z białej kapusty"
+          }
+        }
+      ]
+    },
+    {
+      "mealId": 2,
+      "name": "żeberka",
+      "price": 56.23,
+      "vegan": false,
+      "vegetarian": "false",
+      "quantities": [
+        {
+          "quantityId": 6,
+          "quantity": 300,
+          "unit": "g",
+          "ingredient":   {
+            "ingredientId": 7,
+            "name": "żeberka"
+          }
+        },
+        {
+          "quantityId": 8,
+          "quantity": 200,
+          "unit": "g",
+          "ingredient":   {
+            "ingredientId": 10,
+            "name": "frytki"
+          }
+        },
+        {
+          "quantityId": 7,
+          "quantity": 100,
+          "unit": "g",
+          "ingredient":   {
+            "ingredientId": 12,
+            "name": "mizeria"
+          }
+        }
+      ]
+    }
+  ]
+}
