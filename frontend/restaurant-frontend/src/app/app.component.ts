@@ -6,8 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title: string = 'restaurant-frontend';
-
-  constructor() {
-  }
+  title = 'restaurant-frontend';
 }

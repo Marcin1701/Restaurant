@@ -1,0 +1,4 @@
+<nav mat-tab-nav-bar [backgroundColor]="background">
+  <a mat-tab-link *ngFor="let link of links"
+     (click)="redirect(link)"> {{ link }} </a>
+</nav>
