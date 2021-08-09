@@ -1,35 +1,35 @@
 {
   "orderId": 3,
-  "price": 123.32,
-  "customerId": [],
-  "orderDate": "2021-12-01T13:30",
+  "price": 123.32,  // to trzeba będzie policzyć i zwrócić - cena całkowita
+  "customerId": [], // Tylko dla zamówienia na wynos
+  "orderDate": "2021-12-01T13:30", // Nie jest ważny format 
   "cardPayment": false,
   "table": 3,
   "takeAway": false,
   "mealList": [
-    {
+    { // 1 posiłek
       "mealId": 1,
-      "name": "schabowy",
-      "price": 32.29,
+      "name": "schabowy z ziemniakami i surówką", // taki sam jak w request - tylko to wysyłam z frontu
+      "price": 32.29,     // musi być zdefiniowana
       "vegan": false,
       "vegetarian": false,
       "quantities": [
-        {
+        { // Ilości - ściśle zdefiniowane dla danej potrawy - WR - Misia
           "quantityId": 3,
           "quantity": 200,
           "unit": "g",
-          "ingredient":   {
+          "ingredient":   { // Składniki
             "ingredientId": 3,
-            "name": "schab"
+            "name": "schab" // to mięso
           }
         },
-        {
+        { 
           "quantityId": 3,
           "quantity": 400,
           "unit": "g",
           "ingredient": {
             "ingredientId": 3,
-            "name": "ziemniaki"
+            "name": "ziemniaki" // to ziemniaki
           }
         },
         {
