@@ -1,5 +1,11 @@
 package polsl.take.restaurant.service;
 
+
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -9,6 +15,9 @@ import javax.persistence.Query;
 
 import polsl.take.restaurant.model.Meal;
 import polsl.take.restaurant.model.Order;
+import polsl.take.restaurant.model.OrderRequest;
+import polsl.take.restaurant.model.Quantity;
+import polsl.take.restaurant.service.*;
 
 @Stateless
 public class OrderService {
@@ -51,5 +60,35 @@ public class OrderService {
 		Order order = manager.find(Order.class, id_order);
 		List<Meal> list = order.getMealList();
 		return list;
+	}
+	
+	public Order addOrderByRequest(OrderRequest orderRequest){
+		if(orderRequest.getMealList() == null){
+			return null;
+		}
+		List<Meal> mealList = new ArrayList<Meal>();
+		Float orderPrice = 0F;
+		for(Meal meal : orderRequest.getMealList()){
+			MealService mealService = new MealService();
+			Meal foundMeal = mealService.findMealByName(meal.getName());
+			mealList.add(foundMeal);
+			orderPrice += foundMeal.getPrice();
+		}
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		Order order = new Order();
+		order.setPrice(orderPrice);
+		if(orderRequest.getTakeAway()){
+			order.setCustomerId(orderRequest.getCustomerId());
+		}
+		else{
+			order.setCustomerId(null);
+		}
+		order.setOrderDate(timestamp);
+		order.setCardPayment(orderRequest.getCardPayment());
+		order.setTable(orderRequest.getTable());
+		order.setTakeAway(orderRequest.getTakeAway());
+		order.setMealList(mealList);
+		manager.persist(order);
+		return order;
 	}
 }

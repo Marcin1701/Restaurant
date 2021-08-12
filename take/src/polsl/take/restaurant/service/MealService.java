@@ -34,6 +34,14 @@ public class MealService {
 		return manager.find(Meal.class, id);
 	}
 	
+	public Meal findMealByName(String name){
+		Query query = manager.createQuery("select m from Meal m where m.name like :custName")
+				.setParameter("custName", name);
+		@SuppressWarnings("unchecked")
+		Meal meal = (Meal) query.getSingleResult();
+		return meal;
+	}
+	
 	// Update
 	public void update(Meal meal) {
 		meal = manager.merge(meal);

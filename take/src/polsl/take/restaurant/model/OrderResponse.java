@@ -1,53 +1,27 @@
 package polsl.take.restaurant.model;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "orders")
-public class Order implements Serializable {
+public class OrderResponse {
 	
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "order_id")
 	private Integer orderId;
-
-	@Column(name = "prices")
+	
 	private Float price;
 	
-	@ManyToOne
-	@JoinColumn(name = "customer_id")
 	private Customer customerId;
 	
-	@Column(name = "order_date")
-	private Timestamp orderDate;
-	
-	@Column(name = "card_payment")
 	private Boolean cardPayment;
 	
-	@Column(name = "order_table")
+	private Timestamp orderDate;
+	
 	private Integer table;
 	
-	@Column(name = "take_away")
 	private Boolean takeAway;
 	
-	@OneToMany(mappedBy = "orderId")
 	private List<Meal> mealList;
-	
-	public Integer getOrderId(Integer id) {
+
+	public Integer getOrderId() {
 		return orderId;
 	}
 
@@ -71,20 +45,20 @@ public class Order implements Serializable {
 		this.customerId = customerId;
 	}
 
-	public Timestamp getOrderDate() {
-		return orderDate;
-	}
-
-	public void setOrderDate(Timestamp orderDate) {
-		this.orderDate = orderDate;
-	}
-
 	public Boolean getCardPayment() {
 		return cardPayment;
 	}
 
 	public void setCardPayment(Boolean cardPayment) {
 		this.cardPayment = cardPayment;
+	}
+
+	public Timestamp getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(Timestamp orderDate) {
+		this.orderDate = orderDate;
 	}
 
 	public Integer getTable() {
@@ -110,4 +84,6 @@ public class Order implements Serializable {
 	public void setMealList(List<Meal> mealList) {
 		this.mealList = mealList;
 	}
+	
+	
 }
