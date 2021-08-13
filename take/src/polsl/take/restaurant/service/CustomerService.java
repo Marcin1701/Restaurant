@@ -31,7 +31,11 @@ public class CustomerService {
 	
 	// Read
 	public Customer find(int id) {
-		return manager.find(Customer.class, id);
+		Query query = manager.createQuery("select c from Customer c where customer_id=" + String.valueOf(id));
+		@SuppressWarnings("unchecked")
+		List<Customer> list = query.getResultList();
+		Customer x = list.get(0);
+		return x;
 	}
 	
 	// Update
