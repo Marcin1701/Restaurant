@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {CustomerAction} from "../../actions/customer.action";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {HttpService} from "../../common/services/http.service";
 import {OrderRequest, OrderResponse} from "../../model/RestaurantModel";
@@ -26,7 +25,6 @@ export class OrdersComponent implements OnInit {
   allOrders: OrderResponse[] = [];
 
   constructor(public dialog: MatDialog,
-              private customerAction: CustomerAction,
               private _snackBar: MatSnackBar,
               private httpService: HttpService) {
   }

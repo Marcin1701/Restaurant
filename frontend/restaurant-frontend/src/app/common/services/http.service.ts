@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Customer, MealResponse, OrderRequest, OrderResponse} from "../../model/RestaurantModel";
 import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment"
 
 @Injectable({
@@ -20,22 +20,22 @@ export class HttpService {
   }
 
   getCustomers(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.apiUrl + '/customers');
+    return this.http.get<Customer[]>(this.apiUrl + '/customer');
   }
 
   getOrders(): Observable<OrderResponse[]> {
-    return this.http.get<OrderResponse[]>(this.apiUrl + '/orders');
+    return this.http.get<OrderResponse[]>(this.apiUrl + '/order');
   }
 
   getMeals(): Observable<MealResponse[]> {
-    return this.http.get<MealResponse[]>(this.apiUrl + '/meals');
+    return this.http.get<MealResponse[]>(this.apiUrl + '/meal');
   }
 
   addCustomer(customer: Customer): Observable<Customer> {
-    return this.http.post<Customer>(this.apiUrl + '/customers', customer);
+    return this.http.post<Customer>(this.apiUrl + '/customer', customer);
   }
 
   addOrder(order: OrderRequest): Observable<OrderResponse> {
-    return this.http.post<OrderResponse>(this.apiUrl + '/orders', order);
+    return this.http.post<OrderResponse>(this.apiUrl + '/order', order);
   }
 }

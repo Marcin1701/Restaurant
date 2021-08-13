@@ -3,7 +3,6 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog
 import {OrderRequest} from "../../../model/RestaurantModel";
 import {FormControl} from "@angular/forms";
 import {HttpService} from "../../../common/services/http.service";
-import {CustomerAction} from "../../../actions/customer.action";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AddMealComponent} from "./add-meal/add-meal.component";
 
@@ -25,7 +24,6 @@ export class AddOrderComponent {
     public dialogRef: MatDialogRef<AddOrderComponent>,
     @Inject(MAT_DIALOG_DATA) public order: OrderRequest,
     public dialog: MatDialog,
-    private customerAction: CustomerAction,
     private _snackBar: MatSnackBar,
   ) {
     this.order.cardPayment = false;
