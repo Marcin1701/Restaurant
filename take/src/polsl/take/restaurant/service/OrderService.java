@@ -63,14 +63,14 @@ public class OrderService {
 	}
 	
 	public Order addOrderByRequest(OrderRequest orderRequest){
-		if(orderRequest.getMealList() == null){
+		if(orderRequest.getMealNames() == null){
 			return null;
 		}
 		List<Meal> mealList = new ArrayList<Meal>();
 		Float orderPrice = 0F;
-		for(Meal meal : orderRequest.getMealList()){
+		for(String mealName : orderRequest.getMealNames()){
 			MealService mealService = new MealService();
-			Meal foundMeal = mealService.findMealByName(meal.getName());
+			Meal foundMeal = mealService.findMealByName(mealName);
 			mealList.add(foundMeal);
 			orderPrice += foundMeal.getPrice();
 		}

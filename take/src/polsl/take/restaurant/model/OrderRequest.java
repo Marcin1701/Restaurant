@@ -12,7 +12,7 @@ public class OrderRequest {
 	
 	private Customer customerId;
 	
-	private List<Meal> mealList;
+	private List<String> mealNames;
 
 	public Boolean getCardPayment() {
 		return cardPayment;
@@ -46,12 +46,12 @@ public class OrderRequest {
 		this.takeAway = takeAway;
 	}
 
-	public List<Meal> getMealList() {
-		return mealList;
+	public List<String> getMealNames() {
+		return mealNames;
 	}
 
-	public void setMealList(List<Meal> mealList) {
-		this.mealList = mealList;
+	public void setMealNames(List<String> mealNames) {
+		this.mealNames = mealNames;
 	}
 	
 	
