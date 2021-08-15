@@ -12,9 +12,7 @@ import {HttpService} from "../../common/services/http.service";
 })
 export class CustomersComponent implements OnInit {
   addCustomerPopupWidth: string = '300px';
-
   newCustomer!: Customer;
-
   allCustomers: Customer[] = [];
 
   constructor(public dialog: MatDialog,
@@ -48,7 +46,9 @@ export class CustomersComponent implements OnInit {
   }
 
   private addCustomer(customer: Customer) {
-     this.httpService.addCustomer(customer).subscribe(customerAdded => this.allCustomers.push(customerAdded));
-     console.log("All customers", this.allCustomers);
+     this.httpService.addCustomer(customer).subscribe();
+     this.allCustomers.push(customer);
+     console.log("Customer", customer);
+     window.location.reload();
   }
 }

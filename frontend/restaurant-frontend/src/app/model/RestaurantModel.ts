@@ -10,6 +10,7 @@ export interface OrderRequest {
   table: number | null;
   takeAway: boolean;
   mealNames: string[];
+  customerId?: number;
 }
 
 export interface OrderResponse {

@@ -12,16 +12,13 @@ import {AddOrderComponent} from "./add-order/add-order.component";
 })
 export class OrdersComponent implements OnInit {
   addOrderWidth: string = '800px';
-
   addOrderHeight: string = '600px';
-
   newOrder: OrderRequest = {
     table: null,
     takeAway: false,
     mealNames: [],
     cardPayment: false
   };
-
   allOrders: OrderResponse[] = [];
 
   constructor(public dialog: MatDialog,

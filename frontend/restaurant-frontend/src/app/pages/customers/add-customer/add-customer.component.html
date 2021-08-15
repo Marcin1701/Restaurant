@@ -1,19 +1,19 @@
-<h1 mat-dialog-title>Add customer</h1>
+<h1 mat-dialog-title>Dodaj klienta</h1>
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
-    <mat-label>First name</mat-label>
+    <mat-label>Imię</mat-label>
     <input matInput [(ngModel)]="customer.firstName">
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Last name</mat-label>
+    <mat-label>Nazwisko</mat-label>
     <input matInput [(ngModel)]="customer.lastName">
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Phone</mat-label>
+    <mat-label>Numer telefonu</mat-label>
     <input matInput [(ngModel)]="customer.phoneNumber">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="warn" (click)="onNoClick()">Close</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="customer" cdkFocusInitial>Add</button>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Anuluj</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="customer" cdkFocusInitial>Dodaj</button>
 </div>

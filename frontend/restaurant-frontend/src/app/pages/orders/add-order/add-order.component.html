@@ -13,11 +13,12 @@
   <div class="table-choice">
     <mat-form-field appearance="fill">
       <mat-label>Numer stolika</mat-label>
-      <input matInput [(ngModel)]="order.table">
+      <input matInput [formControl]="tableFormControl" [errorStateMatcher]="matcher" [(ngModel)]="order.table">
+      <mat-error *ngIf="validateOrder(order.table)">Podaj poprawny numer stolika</mat-error>
     </mat-form-field>
   </div>
 </div>
-<div class="container">
+<div class="add-meal-button">
   <button class="button" mat-raised-button color="primary" (click)="openDialog()">Dodaj potrawę</button>
 </div>
 <mat-list *ngIf="selectedMeals.length > 0">
@@ -27,7 +28,7 @@
     </mat-list-item>
   </ng-container>
 </mat-list>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="add-order-buttons">
   <button mat-raised-button color="warn" (click)="onNoClick()">Anuluj</button>
   <button mat-raised-button color="primary" [mat-dialog-close]="order" (click)="setNewOrder()" cdkFocusInitial>Dodaj</button>
 </div>
