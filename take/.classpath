@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/jaxrs-api-2.1.0.GA.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-annotations-api_1.1_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-ejb-api_3.1_spec-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-annotations-3.4.0.GA.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/jackson-annotations-2.13.0-rc1.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-2.13.0-rc1.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-databind-2.13.0-rc1.jar"/>
+	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
+</classpath>

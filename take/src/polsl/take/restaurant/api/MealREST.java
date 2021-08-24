@@ -52,8 +52,8 @@ public class MealREST {
 		}
 		
 		@GET
-		@Path("/{id_meal}/quantities")
-		public List<Quantity> getMealsQuantities(@PathParam("meal_id") int meal_id){
+		@Path("/{idx}/quantities")
+		public List<Quantity> getMealsQuantities(@PathParam("idx") int meal_id){
 			return mealService.findMealQuantities(meal_id);
 		}
 		

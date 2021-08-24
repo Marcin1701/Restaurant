@@ -5,11 +5,17 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "ingredients")
@@ -25,7 +31,8 @@ public class Ingredient implements Serializable {
 	@Column(name = "name")
 	private String name;
 	
-	@OneToMany(mappedBy = "ingredient")
+	@OneToMany(mappedBy = "ingredient", fetch=FetchType.EAGER)
+	@Fetch(value = FetchMode.SELECT)
 	private List<Quantity> quantities;
 	
 	public Integer getIngredientId() {
@@ -39,7 +46,7 @@ public class Ingredient implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	@JsonManagedReference(value="ingredient-quantity")
 	public List<Quantity> getQuantities() {
 		return quantities;
 	}

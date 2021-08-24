@@ -3,6 +3,7 @@ package polsl.take.restaurant.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,9 +14,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 @Table(name = "customers")
-@XmlRootElement
 public class Customer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,9 +42,12 @@ public class Customer implements Serializable {
 	@Column(name = "phone_number")
 	private String phoneNumber;
 		
-	@OneToMany(mappedBy = "customerId", fetch = FetchType.EAGER)
+	
+	@OneToMany(mappedBy = "customerrr", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SELECT)
 	private List<Order> orderList;
 	
+	@JsonManagedReference(value="order-customer")
 	public List<Order> getOrderList() {
 		return orderList;
 	}
@@ -44,7 +55,7 @@ public class Customer implements Serializable {
 	public void setOrderList(List<Order> orderList) {
 		this.orderList = orderList;
 	}
-	
+
 	public Integer getCustomerId() {
 		return customerId;
 	}
@@ -52,11 +63,11 @@ public class Customer implements Serializable {
 	public String getFirstName() {
 		return this.firstName;
 	}
-	
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
+
 	public String getLastName() {
 		return this.lastName;
 	}
@@ -72,4 +83,18 @@ public class Customer implements Serializable {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+//	@Override
+//    public String toString() {
+//        return "Customer{" +
+//                "customerId=" + customerId +
+//                ", firstName='" + firstName + 
+//                ", lastName='" + lastName + 
+//                ", phoneNumber='" + phoneNumber  +
+//                ", orderList=" + orderList.size() +
+//                '}';
+//    }
+//	@Override
+//    public String toString() {
+//        return "xd";
+//    }
 }

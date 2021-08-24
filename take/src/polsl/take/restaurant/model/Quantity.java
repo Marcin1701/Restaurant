@@ -2,13 +2,18 @@ package polsl.take.restaurant.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -28,12 +33,12 @@ public class Quantity implements Serializable {
 	@Column(name = "unit")
 	private String unit;
 	
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "ingredient_id", nullable = false)
 	private Ingredient ingredient;
 	
-	@ManyToOne
-	@JoinColumn(name = "meal_id", nullable = false)
+	@ManyToOne(cascade={CascadeType.MERGE, CascadeType.REMOVE})
+	@JoinColumn(name = "id", nullable = false)
 	private Meal meal;
 	
 	public Integer getQuantityId() {
@@ -47,7 +52,7 @@ public class Quantity implements Serializable {
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-
+	@JsonBackReference(value="ingredient-quantity")
 	public Ingredient getIngredient() {
 		return ingredient;
 	}
@@ -55,7 +60,7 @@ public class Quantity implements Serializable {
 	public void setIngredient(Ingredient ingredient) {
 		this.ingredient = ingredient;
 	}
-
+	@JsonBackReference(value="meal-quantity")
 	public Meal getMeal() {
 		return meal;
 	}

@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import polsl.take.restaurant.model.Customer;
 import polsl.take.restaurant.model.Meal;
 import polsl.take.restaurant.model.Quantity;
 
@@ -31,7 +32,11 @@ public class MealService {
 	
 	// Read
 	public Meal find(int id) {
-		return manager.find(Meal.class, id);
+		Query query = manager.createQuery("select m from Meal m where meal_id=" + String.valueOf(id));
+		@SuppressWarnings("unchecked")
+		List<Meal> list = query.getResultList();
+		Meal x = list.get(0);
+		return x;
 	}
 	
 	public Meal findMealByName(String name){

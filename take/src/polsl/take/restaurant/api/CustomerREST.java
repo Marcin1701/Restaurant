@@ -59,4 +59,5 @@ public class CustomerREST {
 	public List<Order> getCustomerOrders(@PathParam("customer_id") int customer_id){
 		return customerService.findCustomerOrders(customer_id);
 	}
+	
 }
