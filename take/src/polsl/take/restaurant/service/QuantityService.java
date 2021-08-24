@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import polsl.take.restaurant.model.Customer;
 import polsl.take.restaurant.model.Ingredient;
 import polsl.take.restaurant.model.Meal;
 import polsl.take.restaurant.model.Quantity;
@@ -32,7 +33,11 @@ public class QuantityService {
 	
 	// Read
 	public Quantity find(int id) {
-		return manager.find(Quantity.class, id);
+		Query query = manager.createQuery("select q from Quantity q where quantity_id=" + String.valueOf(id));
+		@SuppressWarnings("unchecked")
+		List<Quantity> list = query.getResultList();
+		Quantity x = list.get(0);
+		return x;
 	}
 	
 	// Update

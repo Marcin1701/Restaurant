@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import polsl.take.restaurant.model.Customer;
 import polsl.take.restaurant.model.Ingredient;
 
 @Stateless
@@ -30,7 +31,11 @@ public class IngredientService {
 	
 	// Read
 	public Ingredient find(int id) {
-		return manager.find(Ingredient.class, id);
+		Query query = manager.createQuery("select i from Ingredient i where ingredient_id=" + String.valueOf(id));
+		@SuppressWarnings("unchecked")
+		List<Ingredient> list = query.getResultList();
+		Ingredient x = list.get(0);
+		return x;
 	}
 	
 	// Update

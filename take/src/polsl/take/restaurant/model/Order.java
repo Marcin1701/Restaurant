@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "orders")
@@ -28,9 +38,10 @@ public class Order implements Serializable {
 	@Column(name = "prices")
 	private Float price;
 	
-	@ManyToOne
+	
+	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name = "customer_id")
-	private Customer customerId;
+	private Customer customerrr;
 	
 	@Column(name = "order_date")
 	private Timestamp orderDate;
@@ -44,9 +55,10 @@ public class Order implements Serializable {
 	@Column(name = "take_away")
 	private Boolean takeAway;
 	
-	@OneToMany(mappedBy = "orderId")
+	@OneToMany(mappedBy = "orderId", fetch= FetchType.EAGER)
+	@Fetch(value = FetchMode.SELECT)
 	private List<Meal> mealList;
-	
+
 	public Integer getOrderId() {
 		return orderId;
 	}
@@ -62,13 +74,14 @@ public class Order implements Serializable {
 	public void setPrice(Float price) {
 		this.price = price;
 	}
-
-	public Customer getCustomerId() {
-		return customerId;
+	
+	@JsonBackReference(value="order-customer")
+	public Customer getCustomerrr() {
+		return customerrr;
 	}
 
-	public void setCustomerId(Customer customerId) {
-		this.customerId = customerId;
+	public void setCustomerId(Customer customerrr) {
+		this.customerrr = customerrr;
 	}
 
 	public Timestamp getOrderDate() {
@@ -103,6 +116,7 @@ public class Order implements Serializable {
 		this.takeAway = takeAway;
 	}
 
+	@JsonManagedReference
 	public List<Meal> getMealList() {
 		return mealList;
 	}
@@ -110,4 +124,9 @@ public class Order implements Serializable {
 	public void setMealList(List<Meal> mealList) {
 		this.mealList = mealList;
 	}
+/*	
+	@Override
+    public String toString() {
+        return "xd";
+    }*/
 }

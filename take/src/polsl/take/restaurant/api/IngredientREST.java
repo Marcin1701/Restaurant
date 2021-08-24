@@ -15,7 +15,10 @@ import javax.ws.rs.Produces;
 import polsl.take.restaurant.model.Ingredient;
 import polsl.take.restaurant.service.IngredientService;
 
-@Path("/quantity")
+//url: localhost:8080/take/ingredient
+
+
+@Path("/ingredient")
 @Consumes({ "application/json" })
 @Produces({ "application/json" })
 public class IngredientREST {
