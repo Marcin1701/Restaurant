@@ -42,6 +42,13 @@ public class OrderREST {
 		orderService.create(order);
 	}
 	
+	//test
+	@POST()
+	@Path("/dupa")
+	public Order addOrderTest(Order order) {
+		return orderService.createAndReturn(order);
+	}
+	
 	@PUT
 	public void updateOrder(Order order) {
 		orderService.update(order);

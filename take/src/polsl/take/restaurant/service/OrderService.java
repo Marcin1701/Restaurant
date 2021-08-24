@@ -1,6 +1,7 @@
 package polsl.take.restaurant.service;
 
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -26,10 +27,29 @@ public class OrderService {
 	@PersistenceContext(name="order")
 	EntityManager manager;
 	
+	@PersistenceContext(name="meal")
+	EntityManager managerMeal;
+	
+	public Meal findMealByName(String name){
+		Query query = managerMeal.createQuery("select m from Meal m where m.name like :custName")
+				.setParameter("custName", name);
+		@SuppressWarnings("unchecked")
+		Meal meal = (Meal) query.getSingleResult();
+		return meal;
+	}
+	
+	MealService mealService = new MealService();
 	// Create
 	public void create(Order order) {
 		manager.persist(order);
 	}
+	
+	//test
+	public Order createAndReturn(Order order) {
+		manager.persist(order);
+		return order;
+	}
+	
 	
 	// Read all
 	public List<Order> findAll() {
@@ -74,8 +94,7 @@ public class OrderService {
 		List<Meal> mealList = new ArrayList<Meal>();
 		Float orderPrice = 0F;
 		for(String mealName : orderRequest.getMealNames()){
-			MealService mealService = new MealService();
-			Meal foundMeal = mealService.findMealByName(mealName);
+			Meal foundMeal = findMealByName(mealName);
 			mealList.add(foundMeal);
 			orderPrice += foundMeal.getPrice();
 		}

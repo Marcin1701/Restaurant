@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.JoinColumn;
 
@@ -52,7 +53,8 @@ public class Quantity implements Serializable {
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	@JsonBackReference(value="ingredient-quantity")
+	@JsonBackReference(value="ingredient-quantity")//tak by³o
+	//@JsonManagedReference(value="ingredient-quantity") //moja zmiana
 	public Ingredient getIngredient() {
 		return ingredient;
 	}

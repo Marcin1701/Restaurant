@@ -20,6 +20,7 @@ import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -37,7 +38,6 @@ public class Order implements Serializable {
 
 	@Column(name = "prices")
 	private Float price;
-	
 	
 	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name = "customer_id")
@@ -116,7 +116,7 @@ public class Order implements Serializable {
 		this.takeAway = takeAway;
 	}
 
-	@JsonManagedReference
+	@JsonManagedReference(value = "order-meal")
 	public List<Meal> getMealList() {
 		return mealList;
 	}

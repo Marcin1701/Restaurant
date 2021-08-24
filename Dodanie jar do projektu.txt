@@ -1,0 +1,3 @@
+W lib znajdują się jary. Przekopiować je do lib w projekcie roboczym.
+Następnie PPM na projekcie take w Eclipse i Refresh. 
+Potem PPM na projekcie ->Properties -> Java Build Path -> Libraries -> Add Jars. Przeklikac się do lib, zaznaczyć wszytsko i OK.

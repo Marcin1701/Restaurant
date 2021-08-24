@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -46,7 +47,8 @@ public class Ingredient implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	@JsonManagedReference(value="ingredient-quantity")
+	@JsonManagedReference(value="ingredient-quantity") //tak by³o
+	//@JsonBackReference(value="ingredient-quantity") //moja zmiana
 	public List<Quantity> getQuantities() {
 		return quantities;
 	}
