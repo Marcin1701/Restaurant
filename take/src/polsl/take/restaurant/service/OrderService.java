@@ -1,12 +1,7 @@
 package polsl.take.restaurant.service;
 
-
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -14,12 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import polsl.take.restaurant.model.Customer;
 import polsl.take.restaurant.model.Meal;
 import polsl.take.restaurant.model.Order;
 import polsl.take.restaurant.model.OrderRequest;
-import polsl.take.restaurant.model.Quantity;
-import polsl.take.restaurant.service.*;
 
 @Stateless
 public class OrderService {
@@ -29,11 +21,10 @@ public class OrderService {
 	
 	@PersistenceContext(name="meal")
 	EntityManager managerMeal;
-	
+		
 	public Meal findMealByName(String name){
 		Query query = managerMeal.createQuery("select m from Meal m where m.name like :custName")
 				.setParameter("custName", name);
-		@SuppressWarnings("unchecked")
 		Meal meal = (Meal) query.getSingleResult();
 		return meal;
 	}
@@ -98,7 +89,7 @@ public class OrderService {
 			mealList.add(foundMeal);
 			orderPrice += foundMeal.getPrice();
 		}
-		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		LocalDateTime orderDate = LocalDateTime.now();
 		Order order = new Order();
 		order.setPrice(orderPrice);
 		if(orderRequest.getTakeAway()){
@@ -107,7 +98,7 @@ public class OrderService {
 		else{
 			order.setCustomerId(null);
 		}
-		order.setOrderDate(timestamp);
+		order.setOrderDate(orderDate.toString());
 		order.setCardPayment(orderRequest.getCardPayment());
 		order.setTable(orderRequest.getTable());
 		order.setTakeAway(orderRequest.getTakeAway());
