@@ -34,6 +34,12 @@ public class MealREST {
 		public Meal getMeal(@PathParam("id") int id) {
 			return mealService.find(id);
 		}
+		//dla testu, dzia³a
+		@GET
+		@Path("/{name}")
+		public Meal getMealByName(@PathParam("name") String name) {
+			return mealService.findMealByName(name);
+		}
 		
 		@POST
 		public void addMeal(Meal meal) {

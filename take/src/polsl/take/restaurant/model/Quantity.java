@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -52,7 +51,8 @@ public class Quantity implements Serializable {
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	@JsonBackReference(value="ingredient-quantity")
+	@JsonBackReference(value="ingredient-quantity")//tak by³o
+	//@JsonManagedReference(value="ingredient-quantity") //moja zmiana
 	public Ingredient getIngredient() {
 		return ingredient;
 	}

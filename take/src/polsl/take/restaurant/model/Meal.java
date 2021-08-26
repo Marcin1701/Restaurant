@@ -90,7 +90,7 @@ public class Meal implements Serializable{
 	public void setVegetarian(Boolean vegetarian) {
 		this.vegetarian = vegetarian;
 	}
-	@JsonBackReference
+	@JsonBackReference(value = "order-meal")
 	public Order getOrderId() {
 		return orderId;
 	}

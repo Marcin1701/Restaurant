@@ -16,6 +16,8 @@ import polsl.take.restaurant.model.Meal;
 import polsl.take.restaurant.model.Order;
 import polsl.take.restaurant.service.OrderService;
 
+import polsl.take.restaurant.model.OrderRequest;
+
 @Path("/order")
 @Consumes({ "application/json" })
 @Produces({ "application/json" })
@@ -40,6 +42,13 @@ public class OrderREST {
 		orderService.create(order);
 	}
 	
+	//test
+	@POST()
+	@Path("/dupa")
+	public Order addOrderTest(Order order) {
+		return orderService.createAndReturn(order);
+	}
+	
 	@PUT
 	public void updateOrder(Order order) {
 		orderService.update(order);
@@ -55,6 +64,12 @@ public class OrderREST {
 	@Path("/{order_id}/meals")
 	public List<Meal> getOrderMeals(@PathParam("order_id") int order_id){
 		return orderService.findOrderMeals(order_id);
+	}
+	
+	@POST
+	@Path("/newOrder")
+	public Order addOrderByRequest(OrderRequest orderRequest){
+		return orderService.addOrderByRequest(orderRequest);
 	}
 }
 
