@@ -31,11 +31,11 @@ export class HttpService {
     return this.http.get<MealResponse[]>(this.apiUrl + '/meals');
   }
 
-  addCustomer(customer: Customer): Observable<Customer> {
-    return this.http.post<Customer>(this.apiUrl + '/customers', customer);
+  addCustomer(customer: Customer) {
+    return this.http.post<Customer>(this.apiUrl + '/customer', customer);
   }
 
   addOrder(order: OrderRequest): Observable<OrderResponse> {
-    return this.http.post<OrderResponse>(this.apiUrl + '/orders', order);
+    return this.http.post<OrderResponse>(this.apiUrl + '/order/newOrder', order);
   }
 }

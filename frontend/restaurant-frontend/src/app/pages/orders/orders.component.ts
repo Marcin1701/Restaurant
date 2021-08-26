@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {CustomerAction} from "../../actions/customer.action";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {HttpService} from "../../common/services/http.service";
 import {OrderRequest, OrderResponse} from "../../model/RestaurantModel";
@@ -13,20 +12,16 @@ import {AddOrderComponent} from "./add-order/add-order.component";
 })
 export class OrdersComponent implements OnInit {
   addOrderWidth: string = '800px';
-
   addOrderHeight: string = '600px';
-
   newOrder: OrderRequest = {
     table: null,
     takeAway: false,
     mealNames: [],
     cardPayment: false
   };
-
   allOrders: OrderResponse[] = [];
 
   constructor(public dialog: MatDialog,
-              private customerAction: CustomerAction,
               private _snackBar: MatSnackBar,
               private httpService: HttpService) {
   }

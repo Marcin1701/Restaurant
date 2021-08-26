@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ThemePalette} from "@angular/material/core";
 import {Router} from "@angular/router";
 
@@ -9,7 +9,6 @@ import {Router} from "@angular/router";
 })
 export class NavbarComponent {
   links: string[] = [
-    "O nas",
     "Zamówienia",
     "Klienci"
   ];
@@ -19,8 +18,8 @@ export class NavbarComponent {
 
   switchRoute(nav: string): any[] {
     switch (nav) {
-      case this.links[1]: return ['/orders'];
-      case this.links[2]: return ['/customers'];
+      case this.links[0]: return ['/orders'];
+      case this.links[1]: return ['/customers'];
       default: return ['/'];
     }
   }
