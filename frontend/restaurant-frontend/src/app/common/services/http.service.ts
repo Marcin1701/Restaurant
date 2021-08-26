@@ -19,16 +19,20 @@ export class HttpService {
     }
   }
 
+  initializeData(): Observable<String> {
+    return this.http.get<string>(this.apiUrl + '/h2');
+  }
+
   getCustomers(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.apiUrl + '/customers');
+    return this.http.get<Customer[]>(this.apiUrl + '/customer');
   }
 
   getOrders(): Observable<OrderResponse[]> {
-    return this.http.get<OrderResponse[]>(this.apiUrl + '/orders');
+    return this.http.get<OrderResponse[]>(this.apiUrl + '/order');
   }
 
   getMeals(): Observable<MealResponse[]> {
-    return this.http.get<MealResponse[]>(this.apiUrl + '/meals');
+    return this.http.get<MealResponse[]>(this.apiUrl + '/meal');
   }
 
   addCustomer(customer: Customer) {
