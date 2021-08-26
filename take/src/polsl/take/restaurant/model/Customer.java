@@ -42,6 +42,14 @@ public class Customer implements Serializable {
 	@Fetch(value = FetchMode.SELECT)
 	private List<Order> orderList;
 	
+	public Customer() {};
+	
+	public Customer(String firstName, String lastName, String phoneNumber) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+	}
+	
 	@JsonManagedReference(value="order-customer")
 	public List<Order> getOrderList() {
 		return orderList;
