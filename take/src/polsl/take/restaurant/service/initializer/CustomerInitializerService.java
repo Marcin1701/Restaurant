@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import polsl.take.restaurant.model.Customer;
 
@@ -21,10 +22,14 @@ public class CustomerInitializerService {
 		this.customers.add(new Customer("Jan", "Kowalski", "546334233"));
 	}
 	
-	public void init() {
+	@SuppressWarnings("unchecked")
+	public List<Customer> init() {
 		this.createCustomers();
 		for (Customer customer: customers) {
 			manager.persist(customer);
 		}
+		Query query = manager.createQuery("SELECT c FROM Customer c");
+		this.customers = query.getResultList();
+		return this.customers;
 	}
 }

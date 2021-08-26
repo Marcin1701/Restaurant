@@ -54,6 +54,16 @@ public class Order implements Serializable {
 	@Fetch(value = FetchMode.SELECT)
 	private List<Meal> mealList;
 
+	public Order() {}
+	
+	public Order(Float price, String orderDate, Boolean cardPayment, Integer table, Boolean takeAway) {
+		this.price = price;
+		this.orderDate = orderDate;
+		this.cardPayment = cardPayment;
+		this.table = table;
+		this.takeAway = takeAway;
+	}
+	
 	public Integer getOrderId() {
 		return orderId;
 	}

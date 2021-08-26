@@ -55,6 +55,15 @@ public class Meal implements Serializable{
     @Fetch(value = FetchMode.SELECT)
 	private List<Quantity> quantities;
 
+	public Meal() {}
+	
+	public Meal(String name, Float price, Boolean vegan, Boolean vegetarian) {
+		this.name = name;
+		this.price = price;
+		this.vegan = vegan;
+		this.vegetarian = vegetarian;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
