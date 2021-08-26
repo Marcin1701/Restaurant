@@ -1,7 +1,7 @@
 package polsl.take.restaurant.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -19,11 +19,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "orders")
@@ -44,7 +40,7 @@ public class Order implements Serializable {
 	private Customer customerrr;
 	
 	@Column(name = "order_date")
-	private Timestamp orderDate;
+	private String orderDate;
 	
 	@Column(name = "card_payment")
 	private Boolean cardPayment;
@@ -84,11 +80,11 @@ public class Order implements Serializable {
 		this.customerrr = customerrr;
 	}
 
-	public Timestamp getOrderDate() {
+	public String getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(Timestamp orderDate) {
+	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
 
