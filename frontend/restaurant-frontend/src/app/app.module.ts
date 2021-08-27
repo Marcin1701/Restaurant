@@ -28,6 +28,7 @@ import {MatSelectModule} from "@angular/material/select";
 import { AddMealComponent } from './pages/orders/add-order/add-meal/add-meal.component';
 import { AllOrdersComponent } from './pages/orders/all-orders/all-orders.component';
 import { ISODate } from "./common/pipe/date.pipe";
+import { AllOrdersDetailsComponent } from './pages/orders/all-orders/all-orders-details/all-orders-details.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ISODate } from "./common/pipe/date.pipe";
     AddOrderComponent,
     AddMealComponent,
     AllOrdersComponent,
-    ISODate
+    ISODate,
+    AllOrdersDetailsComponent
   ],
     imports: [
         BrowserModule,

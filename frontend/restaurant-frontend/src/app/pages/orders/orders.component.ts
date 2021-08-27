@@ -72,10 +72,6 @@ export class OrdersComponent implements OnInit {
     }
   }
 
-  finishOrder(order: OrderResponse) {
-    console.log("Finish", order);
-  }
-
   deleteOrder(order: OrderResponse) {
     this.allOrders = this.allOrders.filter(function(existingOrders) {
       return existingOrders.orderId !== order.orderId;

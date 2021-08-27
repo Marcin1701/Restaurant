@@ -34,14 +34,11 @@
         <button mat-flat-button color="warn" (click)="deleteOrder.emit(order)">Usuń</button>
       </td>
     </ng-container>
-    <ng-container matColumnDef="finish">
+    <ng-container matColumnDef="details">
       <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let order" >
-        <button mat-flat-button (click)="finishOrder.emit(order)">Zakończ</button>
+      <td mat-cell *matCellDef="let order">
+        <button mat-flat-button (click)="openDialog(order)">Szczegóły</button>
       </td>
-    </ng-container>
-    <ng-container>
-
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let order; columns: columnsToDisplay;"></tr>
