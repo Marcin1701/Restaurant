@@ -35,7 +35,7 @@ export class HttpService {
   }
 
   getMealsByOrderId(id: number): Observable<MealResponse[]> {
-    return this.http.get<MealResponse[]>(this.apiUrl + '/meal');
+    return this.http.get<MealResponse[]>(this.apiUrl + '/order/' + id + '/meals');
   }
 
   addCustomer(customer: Customer) {

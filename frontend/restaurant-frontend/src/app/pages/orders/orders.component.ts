@@ -55,6 +55,7 @@ export class OrdersComponent implements OnInit {
   }
 
   private addOrder(order: OrderRequest) {
+    console.log("All orders", this.allOrders);
     if (order.mealNames !== undefined && order.table !== null) {
       let concatenatedOrders = order.mealNames[0];
       if (typeof order.mealNames !== "string") {
@@ -66,7 +67,10 @@ export class OrdersComponent implements OnInit {
       }
       order.mealNames = concatenatedOrders;
       console.log(order.mealNames);
-      this.httpService.addOrder(order).subscribe(addedOrder => this.allOrders.push(addedOrder));
+      this.httpService.addOrder(order).subscribe(addedOrder => {
+        console.log("added", addedOrder);
+        this.allOrders.push(addedOrder)
+      });
       this.newOrder.table = null;
       window.location.reload();
     }
