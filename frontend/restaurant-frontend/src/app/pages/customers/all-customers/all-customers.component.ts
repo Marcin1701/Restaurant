@@ -54,15 +54,17 @@ export class AllCustomersComponent {
       data: this.newOrder
     });
     dialogRef.afterClosed().subscribe(order => {
-      if (order !== undefined) {
+      if (order && order.mealNames !== undefined && order.table !== null) {
         this.addOrder(order);
-        this.openSnackBar();
+        this.openSnackBar('Dodano zamówienie');
+      } else {
+        this.openSnackBar('Błędne dane!')
       }
     });
   }
 
-  openSnackBar() {
-    this._snackBar.open('Dodano zamówienie', 'Ok', {
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'Ok', {
       horizontalPosition: "center",
       verticalPosition: "bottom",
       duration: 1000
@@ -70,8 +72,11 @@ export class AllCustomersComponent {
   }
 
   private addOrder(order: OrderRequest) {
-    order.mealNames = order.mealNames[0];
-    this.httpService.addOrder(order).subscribe();
-    this.newOrder.table = null;
+    if (order.mealNames !== undefined && order.table !== null) {
+      order.mealNames = order.mealNames[0];
+      this.httpService.addOrder(order).subscribe();
+      this.newOrder.table = null;
+      window.location.reload();
+    }
   }
 }

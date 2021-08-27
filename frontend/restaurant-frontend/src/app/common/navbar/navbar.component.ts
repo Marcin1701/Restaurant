@@ -15,7 +15,7 @@ export class NavbarComponent {
   background: ThemePalette = 'primary';
   currentNav = '/';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   switchRoute(nav: string): any[] {
     this.currentNav = nav;

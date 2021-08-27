@@ -8,7 +8,6 @@ import {environment} from "../../../environments/environment"
   providedIn: 'root'
 })
 export class HttpService {
-
   apiUrl: string;
 
   constructor(private http: HttpClient) {
@@ -41,5 +40,9 @@ export class HttpService {
 
   addOrder(order: OrderRequest): Observable<OrderResponse> {
     return this.http.post<OrderResponse>(this.apiUrl + '/order/newOrder', order);
+  }
+
+  deleteOrder(id: number) {
+    return this.http.delete(this.apiUrl + '/order/' + id);
   }
 }

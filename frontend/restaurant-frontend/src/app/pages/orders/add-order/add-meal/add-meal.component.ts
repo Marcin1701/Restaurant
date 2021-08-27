@@ -8,9 +8,7 @@ import {FormControl} from "@angular/forms";
   styleUrls: ['./add-meal.component.less']
 })
 export class AddMealComponent implements DoCheck {
-
   selectedMeal: string[] = [];
-
   mealFormControl = new FormControl();
 
   constructor(public dialogRef: MatDialogRef<AddMealComponent>,

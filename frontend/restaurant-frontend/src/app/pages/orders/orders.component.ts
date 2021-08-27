@@ -37,15 +37,17 @@ export class OrdersComponent implements OnInit {
       data: this.newOrder
     });
     dialogRef.afterClosed().subscribe(order => {
-      if (order !== undefined) {
+      if (order && order.mealNames !== undefined && order.table !== null) {
         this.addOrder(order);
-        this.openSnackBar();
+        this.openSnackBar('Dodano zamówienie');
+      } else {
+        this.openSnackBar('Błędne dane!')
       }
     });
   }
 
-  openSnackBar() {
-    this._snackBar.open('Dodano zamówienie', 'Ok', {
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'Ok', {
       horizontalPosition: "center",
       verticalPosition: "bottom",
       duration: 1000
@@ -53,11 +55,32 @@ export class OrdersComponent implements OnInit {
   }
 
   private addOrder(order: OrderRequest) {
-    order.mealNames = order.mealNames[0];
-    this.httpService.addOrder(order).subscribe(addedOrder => this.allOrders.push(addedOrder));
-    this.newOrder.table = null;
-    window.location.reload();
+    if (order.mealNames !== undefined && order.table !== null) {
+      let concatenatedOrders = order.mealNames[0];
+      if (typeof order.mealNames !== "string") {
+        order.mealNames.forEach((singleOrder, index) => {
+          if (index > 0) {
+            concatenatedOrders = concatenatedOrders.concat(singleOrder);
+          }
+        });
+      }
+      order.mealNames = concatenatedOrders;
+      console.log(order.mealNames);
+      this.httpService.addOrder(order).subscribe(addedOrder => this.allOrders.push(addedOrder));
+      this.newOrder.table = null;
+      window.location.reload();
+    }
   }
 
+  finishOrder(order: OrderResponse) {
+    console.log("Finish", order);
+  }
 
+  deleteOrder(order: OrderResponse) {
+    this.allOrders = this.allOrders.filter(function(existingOrders) {
+      return existingOrders.orderId !== order.orderId;
+    });
+    this.httpService.deleteOrder(order.orderId).subscribe();
+    window.location.reload();
+  }
 }

@@ -32,13 +32,15 @@ export class CustomersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(customer => {
       if (customer !== undefined) {
         this.addCustomer(customer);
-        this.openSnackBar();
+        this.openSnackBar('Dodano klienta!');
+      } else {
+        this.openSnackBar('Błędne dane!')
       }
     });
   }
 
-  openSnackBar() {
-    this._snackBar.open('Customer added!', 'Ok', {
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'Ok', {
       horizontalPosition: "center",
       verticalPosition: "bottom",
       duration: 2000

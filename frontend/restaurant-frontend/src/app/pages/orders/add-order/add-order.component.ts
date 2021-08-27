@@ -45,25 +45,26 @@ export class AddOrderComponent {
       data: this.mealNames
     });
     dialogRef.afterClosed().subscribe(meal => {
-      if (meal !== null) {
+      if (meal !== null && meal !== undefined && meal !== '') {
+        console.log("Meal", meal)
         this.addMeal(meal);
-        this.openSnackBar();
+        this.openSnackBar('Dodano potrawę/potrawy');
+      } else {
+        this.openSnackBar('Błędne dane!');
       }
     });
   }
 
-  openSnackBar() {
-    this._snackBar.open('Dodano potrawę!', 'Ok', {
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'Ok', {
       horizontalPosition: "center",
       verticalPosition: "bottom",
-      duration: 500
+      duration: 1000
     })
   }
 
   private addMeal(meal: string) {
-    if (meal !== null){
-      this.selectedMeals.push(meal);
-    }
+    this.selectedMeals.push(meal);
   }
 
   setNewOrder() {
