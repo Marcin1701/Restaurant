@@ -19,8 +19,8 @@ export class HttpService {
     }
   }
 
-  initializeData(): Observable<String> {
-    return this.http.get<string>(this.apiUrl + '/h2');
+  initializeData(): Observable<any> {
+    return this.http.get(this.apiUrl + '/h2', { responseType: 'text'});
   }
 
   getCustomers(): Observable<Customer[]> {

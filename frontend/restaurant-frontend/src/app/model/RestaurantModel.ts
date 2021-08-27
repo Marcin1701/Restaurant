@@ -9,7 +9,7 @@ export interface OrderRequest {
   cardPayment: boolean;
   table: number | null;
   takeAway: boolean;
-  mealNames: string[];
+  mealNames: string[] | string;
   customerId?: number;
 }
 

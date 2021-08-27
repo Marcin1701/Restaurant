@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {HttpService} from "../../common/services/http.service";
@@ -53,7 +53,11 @@ export class OrdersComponent implements OnInit {
   }
 
   private addOrder(order: OrderRequest) {
+    order.mealNames = order.mealNames[0];
     this.httpService.addOrder(order).subscribe(addedOrder => this.allOrders.push(addedOrder));
     this.newOrder.table = null;
+    window.location.reload();
   }
+
+
 }

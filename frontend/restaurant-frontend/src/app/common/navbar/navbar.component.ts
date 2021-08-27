@@ -13,10 +13,12 @@ export class NavbarComponent {
     "Klienci"
   ];
   background: ThemePalette = 'primary';
+  currentNav = '/';
 
   constructor(private router: Router) { }
 
   switchRoute(nav: string): any[] {
+    this.currentNav = nav;
     switch (nav) {
       case this.links[0]: return ['/orders'];
       case this.links[1]: return ['/customers'];
@@ -25,7 +27,9 @@ export class NavbarComponent {
   }
 
   redirect(link: string) {
-    this.router.navigate(this.switchRoute(link))
-      .then(r => r.valueOf());
+    if (this.currentNav !== link) {
+      this.router.navigate(this.switchRoute(link))
+        .then(r => r.valueOf());
+    }
   }
 }

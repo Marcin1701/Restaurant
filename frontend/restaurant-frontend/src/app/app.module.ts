@@ -27,6 +27,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatSelectModule} from "@angular/material/select";
 import { AddMealComponent } from './pages/orders/add-order/add-meal/add-meal.component';
 import { AllOrdersComponent } from './pages/orders/all-orders/all-orders.component';
+import { ISODate } from "./common/pipe/date.pipe";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AllOrdersComponent } from './pages/orders/all-orders/all-orders.compone
     AddCustomerComponent,
     AddOrderComponent,
     AddMealComponent,
-    AllOrdersComponent
+    AllOrdersComponent,
+    ISODate
   ],
     imports: [
         BrowserModule,
@@ -59,7 +61,7 @@ import { AllOrdersComponent } from './pages/orders/all-orders/all-orders.compone
         MatSortModule,
         MatPaginatorModule,
         MatCheckboxModule,
-        MatSelectModule
+        MatSelectModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

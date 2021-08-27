@@ -39,7 +39,6 @@ export class AllCustomersComponent {
   {
     this.httpService.getCustomers().subscribe(
       customers => {
-        console.log("All", customers);
         this.customers = customers;
         this.tableDataSource = new MatTableDataSource<Customer>(this.customers);
         this.tableDataSource.sort = this.sort;
@@ -71,6 +70,7 @@ export class AllCustomersComponent {
   }
 
   private addOrder(order: OrderRequest) {
+    order.mealNames = order.mealNames[0];
     this.httpService.addOrder(order).subscribe();
     this.newOrder.table = null;
   }

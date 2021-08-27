@@ -14,7 +14,7 @@
     </ng-container>
     <ng-container matColumnDef="orderDate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Data zamówienia</th>
-      <td mat-cell *matCellDef="let order">{{order.orderDate}}</td>
+      <td mat-cell *matCellDef="let order">{{order.orderDate | ISODate }}</td>
     </ng-container>
     <ng-container matColumnDef="table">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Numer stolika</th>
