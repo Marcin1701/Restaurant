@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Customer, MealResponse, OrderRequest, OrderResponse} from "../../model/RestaurantModel";
+import {Customer, MealNamesRequest, MealResponse, OrderRequest, OrderResponse} from "../../model/RestaurantModel";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment"
@@ -36,6 +36,10 @@ export class HttpService {
 
   getMealsByOrderId(id: number): Observable<MealResponse[]> {
     return this.http.get<MealResponse[]>(this.apiUrl + '/order/' + id + '/meals');
+  }
+
+  getMealsByNames(mealNames: any): Observable<MealResponse[]> {
+    return this.http.post<MealResponse[]>(this.apiUrl + '/meal/names', mealNames);
   }
 
   addCustomer(customer: Customer) {

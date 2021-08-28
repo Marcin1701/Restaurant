@@ -41,7 +41,6 @@ export class AllOrdersComponent {
               public dialog: MatDialog,
               private _snackBar: MatSnackBar) {
     this.httpService.getOrders().subscribe(orders => {
-      console.log("Orders", orders);
       this.orders = orders;
       this.tableDataSource = new MatTableDataSource<OrderResponse>(this.orders);
       this.tableDataSource.sort = this.sort;
@@ -50,7 +49,6 @@ export class AllOrdersComponent {
   }
 
   openDialog(order: OrderResponse) {
-    console.log("orderToSend", order);
     const dialogRef = this.dialog.open(AllOrdersDetailsComponent, {
       width: this.orderDetailsWidth,
       height: this.orderDetailsHeight,

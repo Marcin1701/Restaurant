@@ -21,8 +21,12 @@ export interface OrderResponse {
   cardPayment: boolean;
   table: number;
   takeAway: boolean;
-  mealNames: string[];
+  mealNames: string;
   mealList: MealResponse[];
+}
+
+export interface MealNamesRequest {
+  mealNames: string;
 }
 
 export interface MealResponse {

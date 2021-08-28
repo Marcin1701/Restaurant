@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {MealResponse, OrderResponse} from "../../../../model/RestaurantModel";
+import {MealNamesRequest, MealResponse, OrderResponse} from "../../../../model/RestaurantModel";
 import {HttpService} from "../../../../common/services/http.service";
 
 @Component({
@@ -16,13 +16,18 @@ export class AllOrdersDetailsComponent {
               @Inject(MAT_DIALOG_DATA) public order: OrderResponse,
               private httpService: HttpService
   ) {
-    this.httpService.getMealsByOrderId(order.orderId).subscribe(meals => {
-      console.log("Meals recieved", meals);
+    let parsedRequest = this.parseMealNames(order.mealNames);
+    parsedRequest.mealNames = parsedRequest.mealNames.slice(0, -1);
+    this.httpService.getMealsByNames(parsedRequest).subscribe(meals => {
       this.orderMeals = meals;
-    })
+    });
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  private parseMealNames(mealNames: string): MealNamesRequest {
+    return { mealNames: mealNames.toString()};
   }
 }
