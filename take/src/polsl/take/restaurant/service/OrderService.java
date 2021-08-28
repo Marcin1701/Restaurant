@@ -98,11 +98,17 @@ public class OrderService {
 		else{
 			order.setCustomerId(null);
 		}
+		String mealNames = "";
+		for (String meal: orderRequest.getMealNames()) {
+			mealNames += meal;
+			mealNames += ',';
+		}
 		order.setOrderDate(orderDate.toString());
 		order.setCardPayment(orderRequest.getCardPayment());
 		order.setTable(orderRequest.getTable());
 		order.setTakeAway(orderRequest.getTakeAway());
 		order.setMealList(mealList);
+		order.setMealNames(mealNames);
 		manager.persist(order);
 		return order;
 	}

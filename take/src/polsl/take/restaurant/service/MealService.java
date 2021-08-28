@@ -1,5 +1,6 @@
 package polsl.take.restaurant.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import polsl.take.restaurant.model.Meal;
+import polsl.take.restaurant.model.MealNamesRequest;
 import polsl.take.restaurant.model.Quantity;
 
 @Stateless
@@ -15,6 +17,26 @@ public class MealService {
 	
 	@PersistenceContext(name="meal")
 	EntityManager manager;
+	
+	private List<String> mapMeals(String mealNames) {
+		List<String> meals = new ArrayList<String>();
+		String mealName = "";
+		for (int i = 0; i < mealNames.length(); i++) {
+			char sign = mealNames.charAt(i);
+			if (i == mealNames.length() - 1) {
+				mealName += sign;
+				meals.add(mealName);
+				return meals;
+			}
+			if (sign != ',') {
+				mealName += sign;
+			} else {
+				meals.add(mealName);
+				mealName = "";
+			}
+		}
+		return meals;
+	}
 	
 	// Create
 	public void create(Meal meal) {
@@ -62,5 +84,13 @@ public class MealService {
 		Meal meal = manager.find(Meal.class, id_meal);
 		List<Quantity> list = meal.getQuantities();
 		return list;
+	}
+	
+	public List<Meal> getMealsByNames(MealNamesRequest mealNames) {
+		List<Meal> meals = new ArrayList<Meal>();
+		for (String name: this.mapMeals(mealNames.getMealNames())) {
+			meals.add(this.findMealByName(name));
+		}
+		return meals;
 	}
 }

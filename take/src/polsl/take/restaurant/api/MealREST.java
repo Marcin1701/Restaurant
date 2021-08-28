@@ -14,6 +14,7 @@ import javax.ws.rs.Produces;
 
 import polsl.take.restaurant.model.Meal;
 import polsl.take.restaurant.model.Quantity;
+import polsl.take.restaurant.model.MealNamesRequest;
 import polsl.take.restaurant.service.MealService;
 
 @Path("/meal")
@@ -61,6 +62,12 @@ public class MealREST {
 		@Path("/{idx}/quantities")
 		public List<Quantity> getMealsQuantities(@PathParam("idx") int meal_id){
 			return mealService.findMealQuantities(meal_id);
+		}
+		
+		@POST
+		@Path("/names")
+		public List<Meal> getMealsByNames(MealNamesRequest mealNames) {
+			return mealService.getMealsByNames(mealNames);
 		}
 		
 }

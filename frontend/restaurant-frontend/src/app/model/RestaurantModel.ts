@@ -21,6 +21,7 @@ export interface OrderResponse {
   cardPayment: boolean;
   table: number;
   takeAway: boolean;
+  mealNames: string[];
   mealList: MealResponse[];
 }
 

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
 import {OrderResponse} from "../../../model/RestaurantModel";
 import {MatSort} from "@angular/material/sort";
 import {MatTableDataSource} from "@angular/material/table";
@@ -41,6 +41,7 @@ export class AllOrdersComponent {
               public dialog: MatDialog,
               private _snackBar: MatSnackBar) {
     this.httpService.getOrders().subscribe(orders => {
+      console.log("Orders", orders);
       this.orders = orders;
       this.tableDataSource = new MatTableDataSource<OrderResponse>(this.orders);
       this.tableDataSource.sort = this.sort;

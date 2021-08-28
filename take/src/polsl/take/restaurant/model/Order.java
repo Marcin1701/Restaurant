@@ -53,6 +53,9 @@ public class Order implements Serializable {
 	@OneToMany(mappedBy = "orderId", fetch= FetchType.EAGER)
 	@Fetch(value = FetchMode.SELECT)
 	private List<Meal> mealList;
+	
+	@Column(name = "meal_names")
+	private String mealNames;
 
 	public Order() {}
 	
@@ -129,6 +132,15 @@ public class Order implements Serializable {
 	public void setMealList(List<Meal> mealList) {
 		this.mealList = mealList;
 	}
+	
+	public String getMealNames() {
+		return this.mealNames;
+	}
+	
+	public void setMealNames(String mealNames) {
+		this.mealNames = mealNames;
+	}
+	
 /*	
 	@Override
     public String toString() {
