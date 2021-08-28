@@ -1,5 +1,6 @@
 package polsl.take.restaurant.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -18,6 +19,7 @@ public class CustomerService {
 	
 	// Create
 	public void create(Customer customer) {
+		customer.setOrderList(new ArrayList<Order>());
 		manager.persist(customer);
 	}
 	

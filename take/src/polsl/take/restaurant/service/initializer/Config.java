@@ -31,12 +31,19 @@ public class Config {
 	
 	List<Meal> mealList = new ArrayList<Meal>();
 	
+	private Boolean verifyDataInit() {
+		return !this.mealInitializerService.checkMealExistance();
+	}
+	
 	public String initializeData() {
 		try { 
-			this.customerList = this.customerInitializerService.init();
-			this.orderList = this.orderInitializerService.init(this.customerList);
-			this.mealList = this.mealInitializerService.init();
-			return "Data initialized";
+			if (this.verifyDataInit()) {
+				this.customerList = this.customerInitializerService.init();
+				this.orderList = this.orderInitializerService.init(this.customerList);
+				this.mealList = this.mealInitializerService.init();
+				return "Data initialized";
+			}
+			return "Data exists! - Restart server to reinit";
 		} catch (Exception e) {
 			return e.getMessage();
 		}

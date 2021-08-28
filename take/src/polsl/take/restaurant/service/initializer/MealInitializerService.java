@@ -28,6 +28,13 @@ public class MealInitializerService {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public Boolean checkMealExistance() {
+		Query query = manager.createQuery("SELECT m FROM Meal m");
+		this.meals = query.getResultList();
+		return this.meals.size() > 0;
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<Meal> init() {
 		this.createMeals();
 		for (Meal meal: meals) {

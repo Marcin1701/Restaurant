@@ -11,7 +11,7 @@ export class AppComponent {
 
   constructor(private httpService: HttpService) {
     if (!environment.mockApiUrl) {
-      this.httpService.initializeData().subscribe();
+      this.httpService.initializeData().subscribe(response => console.log(response));
     }
   }
 }
