@@ -20,8 +20,8 @@ export class AllOrdersComponent {
     'orderId',
     'price',
     'orderDate',
-    'cardPayment',
     'table',
+    'cardPayment',
     'takeAway',
     'delete',
     'details'

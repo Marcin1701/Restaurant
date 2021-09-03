@@ -12,22 +12,23 @@ export class AllOrdersDetailsComponent {
 
   orderMeals!: MealResponse[];
 
-  constructor(public dialogRef: MatDialogRef<AllOrdersDetailsComponent>,
-              @Inject(MAT_DIALOG_DATA) public order: OrderResponse,
+  constructor(@Inject(MAT_DIALOG_DATA) public order: OrderResponse,
               private httpService: HttpService
   ) {
-    let parsedRequest = this.parseMealNames(order.mealNames);
-    parsedRequest.mealNames = parsedRequest.mealNames.slice(0, -1);
-    this.httpService.getMealsByNames(parsedRequest).subscribe(meals => {
-      this.orderMeals = meals;
-    });
+    let parsedRequest = AllOrdersDetailsComponent.parseMealNames(order.mealNames);
+    if (parsedRequest !== undefined) {
+      parsedRequest.mealNames = parsedRequest.mealNames.slice(0, -1);
+      this.httpService.getMealsByNames(parsedRequest).subscribe(meals => {
+        this.orderMeals = meals;
+      });
+    }
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  private parseMealNames(mealNames: string): MealNamesRequest {
-    return { mealNames: mealNames.toString()};
+  private static parseMealNames(mealNames: string): MealNamesRequest | undefined {
+    if (mealNames !== null) {
+      return { mealNames: mealNames.toString() };
+    } else {
+      return undefined
+    }
   }
 }
