@@ -29,6 +29,8 @@ import { AddMealComponent } from './pages/orders/add-order/add-meal/add-meal.com
 import { AllOrdersComponent } from './pages/orders/all-orders/all-orders.component';
 import { ISODate } from "./common/pipe/date.pipe";
 import { AllOrdersDetailsComponent } from './pages/orders/all-orders/all-orders-details/all-orders-details.component';
+import { MealsComponent } from './pages/meals/meals.component';
+import { AllMealsComponent } from './pages/meals/all-meals/all-meals.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,10 @@ import { AllOrdersDetailsComponent } from './pages/orders/all-orders/all-orders-
     AddMealComponent,
     AllOrdersComponent,
     ISODate,
-    AllOrdersDetailsComponent
+    AllOrdersDetailsComponent,
+    MealsComponent,
+    AllMealsComponent,
+    AddMealComponent,
   ],
     imports: [
         BrowserModule,

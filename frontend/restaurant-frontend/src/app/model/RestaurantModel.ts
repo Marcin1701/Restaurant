@@ -1,8 +1,47 @@
 export interface Customer {
+  customerId?: number;
   id?: number;
   firstName: string;
   lastName: string;
   phoneNumber: string;
+  orderList?: OrderResponse[];
+}
+
+// export interface CustomerRequest {
+//   customerId: number;
+//   firstName: string;
+//   lastName: string;
+//   phoneNumber: string;
+//   orderList?: OrderResponse[];
+// }
+
+export interface Ingredient {
+  ingredientId?: number;
+  name: string;
+}
+
+export interface Quantity {
+  quantityId?: number;
+  quantity: number;
+  unit: string;
+  ingredient: IngredientResponse[];
+  meal: MealResponse[];
+}
+
+export interface Meal {
+  mealId?: number;
+  id?: number;
+  name: string;
+}
+
+export interface Order {
+  customerId: number;
+  price: number;
+  orderDate: '2021-10-10T00:00:00';
+  cardPayment: boolean;
+  table: number;
+  takeAway: boolean;
+  mealList: MealResponse[];
 }
 
 export interface OrderRequest {
@@ -49,5 +88,3 @@ export interface IngredientResponse {
   ingredientId: number;
   name: string;
 }
-
-

@@ -10,7 +10,9 @@ import {Router} from "@angular/router";
 export class NavbarComponent {
   links: string[] = [
     "Zamówienia",
-    "Klienci"
+    "Klienci",
+    "Menu",
+    "Magazyn",
   ];
   background: ThemePalette = 'primary';
   currentNav = '/';
@@ -22,6 +24,8 @@ export class NavbarComponent {
     switch (nav) {
       case this.links[0]: return ['/orders'];
       case this.links[1]: return ['/customers'];
+      case this.links[2]: return ['/meals'];
+      case this.links[3]: return ['/ingredients'];
       default: return ['/'];
     }
   }
