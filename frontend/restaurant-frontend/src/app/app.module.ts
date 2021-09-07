@@ -31,6 +31,7 @@ import { ISODate } from "./common/pipe/date.pipe";
 import { AllOrdersDetailsComponent } from './pages/orders/all-orders/all-orders-details/all-orders-details.component';
 import { MealsComponent } from './pages/meals/meals.component';
 import { AllMealsComponent } from './pages/meals/all-meals/all-meals.component';
+import { AddMenuMealComponent } from './pages/meals/add-meal/add-menu-meal.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { AllMealsComponent } from './pages/meals/all-meals/all-meals.component';
     AllOrdersDetailsComponent,
     MealsComponent,
     AllMealsComponent,
-    AddMealComponent,
+    AddMenuMealComponent
   ],
     imports: [
         BrowserModule,

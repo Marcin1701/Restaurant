@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {Meal} from "../../model/RestaurantModel";
-import {AddMealComponent} from "./add-meal/add-meal.component";
+import {AddMenuMealComponent} from "./add-meal/add-menu-meal.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {HttpService} from "../../common/services/http.service";
 
@@ -25,7 +25,7 @@ export class MealsComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(AddMealComponent, {
+    const dialogRef = this.dialog.open(AddMenuMealComponent, {
       width: this.addMealPopupWidth,
       data: { meal: this.newMeal }
     });

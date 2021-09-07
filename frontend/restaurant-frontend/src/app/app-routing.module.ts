@@ -4,8 +4,6 @@ import { CustomersComponent } from './pages/customers/customers.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { AllCustomersComponent } from './pages/customers/all-customers/all-customers.component';
 import { AddCustomerComponent } from './pages/customers/add-customer/add-customer.component';
-import { AllMealsComponent } from './pages/meals/all-meals/all-meals.component';
-import { AddMealComponent } from './pages/meals/add-meal/add-meal.component';
 import { MealsComponent } from './pages/meals/meals.component';
 
 const routes: Routes = [
