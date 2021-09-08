@@ -53,7 +53,7 @@ public class MealService {
 	
 	// Read
 	public Meal find(int id) {
-		Query query = manager.createQuery("select m from Meal m where meal_id=" + String.valueOf(id));
+		Query query = manager.createQuery("select m from Meal m where id=" + String.valueOf(id));
 		@SuppressWarnings("unchecked")
 		List<Meal> list = query.getResultList();
 		Meal x = list.get(0);

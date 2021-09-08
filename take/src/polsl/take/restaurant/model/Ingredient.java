@@ -3,6 +3,7 @@ package polsl.take.restaurant.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,7 +32,7 @@ public class Ingredient implements Serializable {
 	@Column(name = "name")
 	private String name;
 	
-	@OneToMany(mappedBy = "ingredient", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "ingredient", fetch=FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@Fetch(value = FetchMode.SELECT)
 	private List<Quantity> quantities;
 	

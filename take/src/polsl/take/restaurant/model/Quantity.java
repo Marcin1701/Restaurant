@@ -36,7 +36,8 @@ public class Quantity implements Serializable {
 	@JoinColumn(name = "ingredient_id", nullable = false)
 	private Ingredient ingredient;
 	
-	@ManyToOne(cascade={CascadeType.MERGE, CascadeType.REMOVE})
+	//@ManyToOne(cascade={CascadeType.MERGE, CascadeType.REMOVE})//tak by³o
+	@ManyToOne(cascade={ CascadeType.MERGE})//moja zmiana
 	@JoinColumn(name = "id", nullable = false)
 	private Meal meal;
 	
