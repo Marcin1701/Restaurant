@@ -36,6 +36,7 @@ import { EditMenuMealComponent } from './pages/meals/edit-meal/edit-meal.compone
 import { EditCustomerComponent } from './pages/customers/edit-customer/edit-customer.component';
 import { MealIngredientsComponent } from './pages/meals/meal-ingredients/meal-ingredients.component';
 import { EditOrderComponent } from './pages/orders/edit-order/edit-order.component';
+import { IngredientsComponent } from './pages/meals/ingredients/ingredients.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { EditOrderComponent } from './pages/orders/edit-order/edit-order.compone
     EditMenuMealComponent,
     EditCustomerComponent,
     MealIngredientsComponent,
-    EditOrderComponent
+    EditOrderComponent,
+    IngredientsComponent
   ],
     imports: [
         BrowserModule,

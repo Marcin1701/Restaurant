@@ -7,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EditMenuMealComponent } from '../edit-meal/edit-meal.component';
+import {IngredientsComponent} from "../ingredients/ingredients.component";
 
 @Component({
   selector: 'app-all-meals',
@@ -121,5 +122,14 @@ export class AllMealsComponent {
       this.httpService.editMeal(meal).subscribe();
       window.location.reload();
     }
+  }
+
+  openIngredientDialog(meal: Meal) {
+    const dialogRef = this.dialog.open(IngredientsComponent, {
+      width: this.addMealWidth,
+      height: this.addMealHeight,
+      data: meal,
+    });
+    dialogRef.afterClosed().subscribe();
   }
 }
