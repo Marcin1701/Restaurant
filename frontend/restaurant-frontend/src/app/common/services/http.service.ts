@@ -148,6 +148,10 @@ export class HttpService {
     return this.http.delete(this.apiUrl + '/quantities/' + id);
   }
 
+  deleteCustomer(id: number) {
+    return this.http.delete(this.apiUrl + '/customer/' + id);
+  }
+
   deleteIngredients(id: number) {
     return this.http.delete(this.apiUrl + '/ingredients/' + id);
   }

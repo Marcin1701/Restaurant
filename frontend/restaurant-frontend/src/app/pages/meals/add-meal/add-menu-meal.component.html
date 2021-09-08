@@ -8,14 +8,12 @@
     <mat-label>Cena</mat-label>
     <input matInput [(ngModel)]="meal.price">
   </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Wegetariańskie?</mat-label>
-    <input matInput [(ngModel)]="meal.vegetarian">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Wegańskie?</mat-label>
-    <input matInput [(ngModel)]="meal.vegan">
-  </mat-form-field>
+  <div>
+    <mat-checkbox [(ngModel)]="meal.vegetarian">Wegetariańskie?
+    </mat-checkbox>
+  </div>
+  <mat-checkbox [(ngModel)]="meal.vegan">Wegańskie?
+  </mat-checkbox>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="warn" (click)="onNoClick()">Anuluj</button>

@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Edytuj posiłek</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Nazwa</mat-label>
+    <input matInput [(ngModel)]="meal.name" value="ppp">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Cena</mat-label>
+    <input matInput [(ngModel)]="meal.price">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Wegetariańskie?</mat-label>
+    <input matInput [(ngModel)]="meal.vegetarian">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Wegańskie?</mat-label>
+    <input matInput [(ngModel)]="meal.vegan">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Anuluj</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="meal" cdkFocusInitial>Dodaj</button>
+</div>

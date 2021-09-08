@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {Meal} from "../../model/RestaurantModel";
 import {AddMenuMealComponent} from "./add-meal/add-menu-meal.component";
+import { EditMenuMealComponent } from './edit-meal/edit-meal.component';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {HttpService} from "../../common/services/http.service";
 
@@ -39,6 +40,21 @@ export class MealsComponent implements OnInit {
     });
   }
 
+  openEditDialog() {
+    const dialogRef = this.dialog.open(EditMenuMealComponent, {
+      width: this.addMealPopupWidth,
+      data: { meal: this.newMeal }
+    });
+    dialogRef.afterClosed().subscribe(meal => {
+      if (meal !== undefined) {
+        this.updateMeal(meal);
+        this.openSnackBar('Edytowano posiłek!');
+      } else {
+        this.openSnackBar('Błędne dane!')
+      }
+    });
+  }
+
   openSnackBar(message: string) {
     this._snackBar.open(message, 'Ok', {
       horizontalPosition: "center",
@@ -53,4 +69,11 @@ export class MealsComponent implements OnInit {
      console.log("Meal", meal);
      window.location.reload();
   }
+  
+  private updateMeal(meal: Meal) {
+    this.httpService.editMeal(meal).subscribe();
+    this.allMeals.push(meal);
+    console.log("Meal", meal);
+    window.location.reload();
+ }
 }

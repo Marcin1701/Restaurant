@@ -47,6 +47,8 @@ export class CustomersComponent implements OnInit {
     })
   }
 
+  
+
   private addCustomer(customer: Customer) {
      this.httpService.addCustomer(customer).subscribe();
      this.allCustomers.push(customer);

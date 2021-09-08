@@ -69,6 +69,7 @@ export interface MealNamesRequest {
 }
 
 export interface MealResponse {
+  id: number;
   mealId: number;
   name: string;
   price: number;
