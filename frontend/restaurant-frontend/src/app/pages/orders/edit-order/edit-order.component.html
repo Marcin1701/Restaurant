@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Edytuj zamówienie</h1>
+<div mat-dialog-content>
+    <span class="card-payment">
+        <mat-checkbox [(ngModel)]="order.cardPayment">
+            Płatność kartą
+        </mat-checkbox>
+    </span>
+    <span class="take-away">
+        <mat-checkbox [(ngModel)]="order.takeAway" [disabled]="true">
+            Na wynos
+        </mat-checkbox>
+    </span>
+    <div class="table-choice">
+        <mat-form-field appearance="fill">
+            <mat-label>Numer stolika</mat-label>
+            <input matInput [formControl]="tableFormControl" [errorStateMatcher]="matcher" [(ngModel)]="order.table">
+            <mat-error *ngIf="validateOrder(order.table)">Podaj poprawny numer stolika</mat-error>
+        </mat-form-field>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="order" cdkFocusInitial>Zatwierdź zmiany</button>
+</div>

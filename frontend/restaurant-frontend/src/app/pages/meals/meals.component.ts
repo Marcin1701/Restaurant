@@ -40,21 +40,6 @@ export class MealsComponent implements OnInit {
     });
   }
 
-  openEditDialog() {
-    const dialogRef = this.dialog.open(EditMenuMealComponent, {
-      width: this.addMealPopupWidth,
-      data: { meal: this.newMeal }
-    });
-    dialogRef.afterClosed().subscribe(meal => {
-      if (meal !== undefined) {
-        this.updateMeal(meal);
-        this.openSnackBar('Edytowano posiłek!');
-      } else {
-        this.openSnackBar('Błędne dane!')
-      }
-    });
-  }
-
   openSnackBar(message: string) {
     this._snackBar.open(message, 'Ok', {
       horizontalPosition: "center",
@@ -69,11 +54,4 @@ export class MealsComponent implements OnInit {
      console.log("Meal", meal);
      window.location.reload();
   }
-  
-  private updateMeal(meal: Meal) {
-    this.httpService.editMeal(meal).subscribe();
-    this.allMeals.push(meal);
-    console.log("Meal", meal);
-    window.location.reload();
- }
 }

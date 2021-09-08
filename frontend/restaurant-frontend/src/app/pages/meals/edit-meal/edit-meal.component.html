@@ -1,8 +1,8 @@
-<h1 mat-dialog-title>Dodaj posiłek</h1>
+<h1 mat-dialog-title>Edytuj posiłek</h1>
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
     <mat-label>Nazwa</mat-label>
-    <input matInput [(ngModel)]="meal.name">
+    <input matInput [(ngModel)]="meal.name" [placeholder]="meal.name">
   </mat-form-field>
   <div>
     <mat-form-field appearance="fill">
@@ -19,5 +19,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="warn" (click)="onNoClick()">Anuluj</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="meal" cdkFocusInitial>Dodaj</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="meal" cdkFocusInitial>Zatwierdź zmiany</button>
 </div>

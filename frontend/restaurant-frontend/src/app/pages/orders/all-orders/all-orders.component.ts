@@ -7,6 +7,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AllOrdersDetailsComponent} from "./all-orders-details/all-orders-details.component";
+import { EditOrderComponent } from '../edit-order/edit-order.component';
 
 @Component({
   selector: 'app-all-orders',
@@ -24,7 +25,8 @@ export class AllOrdersComponent {
     'cardPayment',
     'takeAway',
     'delete',
-    'details'
+    'details',
+    'edit'
   ];
   orderDetailsWidth: string = '800px';
   orderDetailsHeight: string = '600px';
@@ -55,5 +57,27 @@ export class AllOrdersComponent {
       data: order
     });
     dialogRef.afterClosed().subscribe();
+  }
+
+  openEditDialog(order: OrderResponse) {
+    const dialogRef = this.dialog.open(EditOrderComponent, {
+      width: this.orderDetailsWidth,
+      data: order,
+    });
+    dialogRef.afterClosed().subscribe();
+  }
+
+  updateOrder(orderEdited: OrderResponse) {
+     this.orders = this.orders.map(order => {
+       if (order.orderId === orderEdited.orderId) {
+        order.price = orderEdited.price;
+        order.orderDate = orderEdited.orderDate;
+        order.cardPayment = orderEdited.cardPayment;
+        order.table = orderEdited.table;
+        order.takeAway = orderEdited.takeAway;
+       }
+       return order;
+     });
+     this.httpService.editOrder(orderEdited).subscribe();
   }
 }
