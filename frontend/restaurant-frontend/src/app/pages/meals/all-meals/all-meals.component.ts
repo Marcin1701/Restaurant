@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import {
   Meal,
-  MealResponse,
-  OrderRequest,
+  MealResponse
 } from '../../../model/RestaurantModel';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -10,8 +9,6 @@ import { HttpService } from '../../../common/services/http.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AddOrderComponent } from '../../orders/add-order/add-order.component';
-import { AddMealComponent } from '../../orders/add-order/add-meal/add-meal.component';
 import { EditMenuMealComponent } from '../edit-meal/edit-meal.component';
 
 @Component({
@@ -26,7 +23,7 @@ export class AllMealsComponent {
   sort!: MatSort;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
-  columnNames: string[] = ['name', 'price', 'vegetarian', 'vegan', 'action'];
+  columnNames: string[] = ['name', 'price', 'vegetarian', 'vegan', 'action', 'ingredients', 'delete'];
   newMeal: MealResponse = {
     id: 0,
     mealId: 0,

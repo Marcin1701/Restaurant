@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Ingredient, IngredientResponse } from '../../../model/RestaurantModel';
+import { Ingredient } from '../../../model/RestaurantModel';
 
 @Component({
   selector: 'app-meal-ingredients',
