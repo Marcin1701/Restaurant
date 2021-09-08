@@ -3,6 +3,7 @@ package polsl.take.restaurant.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,6 +17,9 @@ public class CustomerService {
 	
 	@PersistenceContext(name="customer")
 	EntityManager manager;
+	
+	@EJB
+	OrderService orderService;
 	
 	// Create
 	public void create(Customer customer) {
@@ -49,6 +53,11 @@ public class CustomerService {
 	public void delete(int id) {
 		Customer customer = manager.find(Customer.class, id);
 		if (!customer.equals(null)) {
+			if (customer.getOrderList().size() != 0) {
+				for (Order order: customer.getOrderList()) {
+					orderService.delete(order.getOrderId());
+				}
+			}
 			manager.remove(customer);
 		}
 	}
