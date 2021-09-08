@@ -32,7 +32,6 @@ import { AllOrdersDetailsComponent } from './pages/orders/all-orders/all-orders-
 import { MealsComponent } from './pages/meals/meals.component';
 import { AllMealsComponent } from './pages/meals/all-meals/all-meals.component';
 import { AddMenuMealComponent } from './pages/meals/add-meal/add-menu-meal.component';
-import { WarehouseComponent } from './pages/warehouse/warehouse.component';
 import { EditMenuMealComponent } from './pages/meals/edit-meal/edit-meal.component';
 import { EditCustomerComponent } from './pages/customers/edit-customer/edit-customer.component';
 import { MealIngredientsComponent } from './pages/meals/meal-ingredients/meal-ingredients.component';
@@ -53,7 +52,6 @@ import { MealIngredientsComponent } from './pages/meals/meal-ingredients/meal-in
     MealsComponent,
     AllMealsComponent,
     AddMenuMealComponent,
-    WarehouseComponent,
     EditMenuMealComponent,
     EditCustomerComponent,
     MealIngredientsComponent

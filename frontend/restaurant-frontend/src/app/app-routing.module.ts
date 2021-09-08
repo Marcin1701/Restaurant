@@ -16,11 +16,7 @@ const routes: Routes = [
     ],
   },
   { path: 'orders', component: OrdersComponent },
-  { path: 'meals', component: MealsComponent },
-  {
-    path: 'ingredients',
-    component: CustomersComponent,
-  },
+  { path: 'meals', component: MealsComponent }
 ];
 
 @NgModule({
