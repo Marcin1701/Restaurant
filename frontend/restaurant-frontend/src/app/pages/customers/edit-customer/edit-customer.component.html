@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Edytuj klienta</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Imię</mat-label>
+    <input matInput [(ngModel)]="customer.firstName" [placeholder]="customer.firstName">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Nazwisko</mat-label>
+    <input matInput [(ngModel)]="customer.lastName" [placeholder]="customer.lastName">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Numer telefonu</mat-label>
+    <input matInput [(ngModel)]="customer.phoneNumber" [placeholder]="customer.phoneNumber">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" [mat-dialog-close]="customer" cdkFocusInitial>Edytuj</button>
+</div>

@@ -16,7 +16,18 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let customer">
         <button mat-flat-button (click)="openDialog()">Dodaj zamówienie</button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let customer">
         <button mat-flat-button color="warn" (click)="deleteCustomer(customer)">Usuń</button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let customer">
+        <button mat-flat-button (click)="openEditDialog(customer)">Edytuj</button>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columnNames"></tr>

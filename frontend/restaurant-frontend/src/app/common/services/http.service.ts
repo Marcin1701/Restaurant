@@ -114,7 +114,7 @@ export class HttpService {
   }
 
   editCustomer(customer: Customer) {
-    return this.http.post<Customer>(this.apiUrl + '/customer', customer);
+    return this.http.put<Customer>(this.apiUrl + '/customer', customer);
   }
 
   editIngredient(ingredient: Ingredient) {
