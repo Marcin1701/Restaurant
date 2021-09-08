@@ -44,7 +44,7 @@ public class OrderREST {
 	
 	//test
 	@POST()
-	@Path("/dupa")
+	@Path("/aaaaa")
 	public Order addOrderTest(Order order) {
 		return orderService.createAndReturn(order);
 	}
