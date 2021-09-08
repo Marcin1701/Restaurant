@@ -148,7 +148,7 @@ export class HttpService {
     return this.http.delete(this.apiUrl + '/quantities/' + id);
   }
 
-  deleteCustomer(id: number) {
+  deleteCustomer(id: number | undefined) {
     return this.http.delete(this.apiUrl + '/customer/' + id);
   }
 
@@ -158,5 +158,5 @@ export class HttpService {
 
   deleteMeals(id: number) {
     return this.http.delete(this.apiUrl + '/meals/' + id);
-  }  
+  }
 }

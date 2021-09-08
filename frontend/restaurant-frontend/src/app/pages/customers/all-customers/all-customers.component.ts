@@ -76,12 +76,10 @@ export class AllCustomersComponent {
 
   deleteCustomer(customer: Customer) {
     this.allCustomers = this.allCustomers.filter(function (existingCustomers) {
-      return existingCustomers.id !== customer.id;
+      return existingCustomers.customerId !== customer.customerId;
     });
-    console.log(customer);
-    console.log(this.allCustomers);
-    //this.httpService.deleteCustomer(customer.id).subscribe();
-    //window.location.reload();
+    this.httpService.deleteCustomer(customer.customerId).subscribe();
+    window.location.reload();
   }
 
   private addOrder(order: OrderRequest) {
