@@ -35,6 +35,7 @@ import { AddMenuMealComponent } from './pages/meals/add-meal/add-menu-meal.compo
 import { EditMenuMealComponent } from './pages/meals/edit-meal/edit-meal.component';
 import { EditCustomerComponent } from './pages/customers/edit-customer/edit-customer.component';
 import { MealIngredientsComponent } from './pages/meals/meal-ingredients/meal-ingredients.component';
+import { IngredientsComponent } from './pages/meals/ingredients/ingredients.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { MealIngredientsComponent } from './pages/meals/meal-ingredients/meal-in
     AddMenuMealComponent,
     EditMenuMealComponent,
     EditCustomerComponent,
-    MealIngredientsComponent
+    MealIngredientsComponent,
+    IngredientsComponent
   ],
     imports: [
         BrowserModule,
