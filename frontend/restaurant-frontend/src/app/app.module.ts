@@ -55,6 +55,8 @@ import { MealIngredientsComponent } from './pages/meals/meal-ingredients/meal-in
     AddMenuMealComponent,
     WarehouseComponent,
     EditMenuMealComponent,
+    EditCustomerComponent,
+    MealIngredientsComponent
   ],
     imports: [
         BrowserModule,
