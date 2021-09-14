@@ -1,5 +1,7 @@
 package pl.kurs.komis;
 
+// temp
+
 import java.io.Serializable;
 
 import javax.persistence.Entity;
